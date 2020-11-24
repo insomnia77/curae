@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Configuration>
+    <Properties>
+        <Property name="patternFile">[%level] [%t] %d{dd-MM-yyy hh:mm:ss,SS} %C{0}.%M \t%m%n</Property>
+        <Property name="patternConsole">[%level] [%t] %d{dd-MM-yyy hh:mm:ss,SS} %C{0}.%M \t%m%n</Property>
+    </Properties>
+    <Appenders>
+        <Console name="stdout" target="SYSTEM_OUT">
+            <PatternLayout pattern="${patternConsole}"/>
+        </Console>
+        <RollingFile append="true" fileName="logs/log.txt"
+                     filePattern="logs/log.txt"
+                     name="all">
+            <Filters>
+                <ThresholdFilter level="fatal" onMatch="DENY" onMismatch="NEUTRAL"/>
+            </Filters>
+
+            <PatternLayout pattern="${patternFile}"/>
+            <SizeBasedTriggeringPolicy size="5 MB"/>
+        </RollingFile>
+    </Appenders>
+    <Loggers>
+        <Root level="ALL">
+            <AppenderRef ref="all"/>
+            <AppenderRef ref="stdout"/>
+        </Root>
+    </Loggers>
+</Configuration>
