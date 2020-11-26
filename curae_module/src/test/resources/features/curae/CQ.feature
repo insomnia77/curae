@@ -1,6 +1,7 @@
 #language = en
 Feature: CQ
 
+
   Background:
     * user is on the page "LoginPage"
     * user fills the field "User Name" with value "test.qa@cvhcare.com"
@@ -8,7 +9,6 @@ Feature: CQ
     * user clicks the button "Log in"
     #todo: add polling loader
     * user waits "5" seconds
-
 
   @cq
   Scenario Outline: patients

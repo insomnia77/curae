@@ -1,6 +1,6 @@
 #language: en
-Feature: empty
+Feature: createPatient
 
   @fragment
-  Scenario: empty
+  Scenario: createPatient
     * user clicks the button "empty"

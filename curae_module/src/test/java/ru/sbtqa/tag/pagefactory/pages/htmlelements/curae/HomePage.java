@@ -21,6 +21,10 @@ public class HomePage extends HTMLPage {
     @FindBy(xpath = "//button[@ng-click=\"vm.go(entry.state)\" and @aria-label=\"Compliance & Quality\"]")
     private WebElement complianceQuality;
 
+    @ElementTitle(value = "Administration")
+    @FindBy(xpath = "//button[@ng-click=\"vm.go(entry.state)\" and @aria-label=\"Administration\"]")
+    private WebElement Administration;
+
     public HomePage() {
         long startTime = Now();
         Waits.waitForPageToLoad();
