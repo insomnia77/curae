@@ -24,6 +24,30 @@ public class AdmissionPage extends HTMLPage {
     @FindBy(xpath = "//input[@ng-model=\"vm.patientSearch\"]")
     private WebElement searchBar;
 
+    @ElementTitle(value = "New Patient")
+    @FindBy(xpath = "//div[@ng-show=\"vm.filterShow\"]//button[@ng-click=\"vm.newAdmissionClick($event)\"]")
+    private WebElement newPatient;
+
+    @ElementTitle(value = "Search by patient name")
+    @FindBy(xpath = "//input[@type='search']")
+    private WebElement searchByPatientName;
+
+    @ElementTitle(value = "Patient first name")
+    @FindBy(xpath = "//input[@ng-model=\"vm.newpatient.firstName\"]")
+    private WebElement patientFirstName;
+
+    @ElementTitle(value = "Patient last name")
+    @FindBy(xpath = "//input[@ng-model=\"vm.newpatient.lastName\"]")
+    private WebElement patientLastName;
+
+    @ElementTitle(value = "Patient middle name")
+    @FindBy(xpath = "//input[@ng-model=\"vm.newpatient.middleName\"]")
+    private WebElement patientMiddleName;
+
+    @ElementTitle(value = "Patient gender")
+    @FindBy(xpath = "//md-select[@ng-model=\"vm.newpatient.gender\"]")
+    private WebElement patientGender;
+
     public AdmissionPage() {
         long startTime = Now();
         Waits.waitForPageToLoad();

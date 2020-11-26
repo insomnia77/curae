@@ -13,6 +13,9 @@ Feature: admission
   @admission
   Scenario Outline: admission
     #TODO: fragment with creating patient
+    * user performs "createPatient" scenario
+      | searchByName   | firstName   | lastName   | middleName   |
+      | <searchByName> | <firstName> | <lastName> | <middleName> |
     * user is on the page "HomePage"
     * user clicks the button "Administration"
     * user is on the page "AdministrationPage"
@@ -25,11 +28,11 @@ Feature: admission
     * user clicks the button "search button"
     * user fills the field "search bar" with value "<searchValue>"
 
+
+
     Examples:
-      | searchValue      |
-      | test7 |
+      | searchByName | firstName | lastName      | middleName | searchValue |
+      | 123          | test1     | Test lastname | A          | test7       |
 
 
-    #todo: add patient with code a5a3c404b6a6a3c8
-      | a5a3c404b6a6a3c8 |
 
