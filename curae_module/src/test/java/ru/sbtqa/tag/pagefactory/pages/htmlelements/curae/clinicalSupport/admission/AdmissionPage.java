@@ -1,4 +1,4 @@
-package ru.sbtqa.tag.pagefactory.pages.htmlelements.curae;
+package ru.sbtqa.tag.pagefactory.pages.htmlelements.curae.clinicalSupport.admission;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -28,6 +28,9 @@ public class AdmissionPage extends HTMLPage {
     @FindBy(xpath = "//div[@ng-show=\"vm.filterShow\"]//button[@ng-click=\"vm.newAdmissionClick($event)\"]")
     private WebElement newPatient;
 
+    @ElementTitle(value = "patient info")
+    @FindBy(xpath = "//button[@ng-click=\"vm.openPatientInfo(admissionKey)\"]")
+    private WebElement patientInfo;
 
     public AdmissionPage() {
         long startTime = Now();

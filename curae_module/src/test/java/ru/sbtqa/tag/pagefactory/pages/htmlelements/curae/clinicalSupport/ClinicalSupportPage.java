@@ -1,4 +1,4 @@
-package ru.sbtqa.tag.pagefactory.pages.htmlelements.curae;
+package ru.sbtqa.tag.pagefactory.pages.htmlelements.curae.clinicalSupport;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;

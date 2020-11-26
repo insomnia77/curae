@@ -150,7 +150,6 @@ public class HtmlStepDefs {
     }
 
 
-
     @And("^user checks in the element \"([^\"]*)\" number value \"([^\"]*)\"$")
     public void checkValueIsEqual(String elementTitle, String text) throws PageException {
         WebElement webElement = ((HtmlFindUtils) Environment.getFindUtils()).find(elementTitle);
@@ -168,5 +167,11 @@ public class HtmlStepDefs {
         js.executeScript("arguments[0].click();", element);
     }
 
+    @And("^user selects in dropdown \"([^\"]*)\" the value \"([^\"]*)\"$")
+    public void select(String elementTitle, String option) throws PageException {
+        WebElement element = ((HtmlFindUtils) Environment.getFindUtils()).find(elementTitle, true);
+        element.click();
+        Waits.waitAndGetElements("//md-option/div[text()='" + option + "']", Waits.medium_wait, Waits.pollingTime, true).get(0).click();
+    }
 
 }

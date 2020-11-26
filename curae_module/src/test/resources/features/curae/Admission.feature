@@ -13,8 +13,8 @@ Feature: admission
   @admission
   Scenario Outline: admission
     * user performs "createPatient" scenario
-      | searchByName   | firstName   | lastName   | middleName   | birthDate   | patientNumberName   | patientNumber   | patientNumberName2   | patientNumber2   | patientNumberName3   | patientNumber3   |
-      | <searchByName> | <firstName> | <lastName> | <middleName> | <birthDate> | <patientNumberName> | <patientNumber> | <patientNumberName2> | <patientNumber2> | <patientNumberName3> | <patientNumber3> |
+      | searchByName   | firstName   | lastName   | middleName   | gender   | birthDate   | patientNumberName   | patientNumber   | patientNumberName2   | patientNumber2   | patientNumberName3   | patientNumber3   |
+      | <searchByName> | <firstName> | <lastName> | <middleName> | <gender> | <birthDate> | <patientNumberName> | <patientNumber> | <patientNumberName2> | <patientNumber2> | <patientNumberName3> | <patientNumber3> |
     * user is on the page "HomePage"
     * user clicks the button "Administration"
     * user is on the page "AdministrationPage"
@@ -26,12 +26,15 @@ Feature: admission
     * user is on the page "AdmissionPage"
     * user clicks the button "search button"
     * user fills the field "search bar" with value "<searchValue>"
-
-
+    * user is on the page "AdmissionPage"
+    * user clicks the button "patient info"
+    * user is on the page "PatientInfoPage"
+    * user selects the checkbox "Same As Contact Address"
+    * user clicks the button "Edit Contact Info"
 
     Examples:
-      | searchByName | firstName | lastName      | middleName | searchValue | birthDate  | patientNumberName | patientNumber | patientNumberName2 | patientNumber2 | patientNumberName3   | patientNumber3 |
-      | 123          | test1     | Test lastname | A          | test7       | 03-10-1993 | Medicaid Number   | 0015          | MBI Number         | 0016           | Kaiser Policy Number | 0017           |
+      | searchByName | firstName | lastName      | middleName | gender | searchValue | birthDate  | patientNumberName | patientNumber | patientNumberName2 | patientNumber2 | patientNumberName3   | patientNumber3 |
+      | 123          | test1     | Test lastname | A          | Male   | test7       | 03-10-1993 | MBI Number        | 0015          | Medicaid Number    | 0016           | Kaiser Policy Number | 0017           |
 
 
 
