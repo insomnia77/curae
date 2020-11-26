@@ -12,10 +12,9 @@ Feature: admission
 
   @admission
   Scenario Outline: admission
-    #TODO: fragment with creating patient
     * user performs "createPatient" scenario
-      | searchByName   | firstName   | lastName   | middleName   |
-      | <searchByName> | <firstName> | <lastName> | <middleName> |
+      | searchByName   | firstName   | lastName   | middleName   | birthDate   | patientNumberName   | patientNumber   | patientNumberName2   | patientNumber2   | patientNumberName3   | patientNumber3   |
+      | <searchByName> | <firstName> | <lastName> | <middleName> | <birthDate> | <patientNumberName> | <patientNumber> | <patientNumberName2> | <patientNumber2> | <patientNumberName3> | <patientNumber3> |
     * user is on the page "HomePage"
     * user clicks the button "Administration"
     * user is on the page "AdministrationPage"
@@ -31,8 +30,9 @@ Feature: admission
 
 
     Examples:
-      | searchByName | firstName | lastName      | middleName | searchValue |
-      | 123          | test1     | Test lastname | A          | test7       |
+      | searchByName | firstName | lastName      | middleName | searchValue | birthDate  | patientNumberName | patientNumber | patientNumberName2 | patientNumber2 | patientNumberName3   | patientNumber3 |
+      | 123          | test1     | Test lastname | A          | test7       | 03-10-1993 | Medicaid Number   | 0015          | MBI Number         | 0016           | Kaiser Policy Number | 0017           |
+
 
 
 
