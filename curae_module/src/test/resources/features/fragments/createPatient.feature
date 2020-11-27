@@ -16,7 +16,7 @@ Feature: createPatient
     * user clicks element via javascript "New Patient"
     * user is on the page "CreatePatientPopupPage"
     * user checks that text "New Admission" appears on the page
-    #* user fills the field "Search by patient name" with value "<searchByName>"
+    * ? user fills the field "Search by patient name" with value "<searchByName>"
     * user fills the field via javascript "Search by patient name" with value "<searchByName>"
     * user clicks the button "pageBody"
     * user is on the page "CreatePatientPopupPage"

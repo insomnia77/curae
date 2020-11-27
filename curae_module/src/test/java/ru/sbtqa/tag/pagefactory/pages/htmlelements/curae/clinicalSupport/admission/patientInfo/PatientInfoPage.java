@@ -1,4 +1,4 @@
-package ru.sbtqa.tag.pagefactory.pages.htmlelements.curae.clinicalSupport.admission;
+package ru.sbtqa.tag.pagefactory.pages.htmlelements.curae.clinicalSupport.admission.patientInfo;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
