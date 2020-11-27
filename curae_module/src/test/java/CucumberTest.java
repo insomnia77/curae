@@ -7,7 +7,7 @@ import org.junit.runner.RunWith;
         glue = {"ru.sbtqa.tag.stepdefs", "setting"},
         features = {"src/test/resources/features/"},
         //features = {"curae_module/src/test/resources/features"},
-        tags = {"@FirstPatientNewAdmission"}
+        tags = {"@FirstPatientNewAdmissionServiceData"}
 )
 public class CucumberTest {
 }

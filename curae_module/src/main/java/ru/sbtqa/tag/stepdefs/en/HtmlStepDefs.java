@@ -20,6 +20,9 @@ import ru.sbtqa.tag.pagefactory.html.junit.HtmlSteps;
 import ru.sbtqa.tag.pagefactory.web.utils.Converter;
 import ru.sbtqa.tag.pagefactory.web.utils.Waits;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import static ru.sbtqa.tag.pagefactory.web.utils.ElementUtils.getWebElementValue;
 
 public class HtmlStepDefs {
@@ -174,12 +177,27 @@ public class HtmlStepDefs {
         try {
             Waits.waitAndGetElements("(//md-option/div[text()='" + option + "'])[last()]", Waits.medium_wait, Waits.pollingTime, true).get(0).click();
         } catch (org.openqa.selenium.ElementNotInteractableException e) {
-           System.out.println("Not Interactable dropdown, trying again");
-           WebElement dropDown =  Waits.waitAndGetElements("//md-option/div[text()='" + option + "']", Waits.medium_wait, Waits.pollingTime, true).get(0);
+            System.out.println("Not Interactable dropdown, trying again");
+            WebElement dropDown = Waits.waitAndGetElements("//md-option/div[text()='" + option + "']", Waits.medium_wait, Waits.pollingTime, true).get(0);
             JavascriptExecutor js = Environment.getDriverService().getDriver();
             js.executeScript("arguments[0].click();", dropDown);
         }
         Waits.waitNotElementsLite("//md-option/div[text()='" + option + "']", Waits.medium_wait, Waits.pollingTime, Waits.pollingTime);
+    }
+
+    @And("^user fill in autocomplete \"([^\"]*)\" the value \"([^\"]*)\" and select option \"([^\"]*)\"$")
+    public void selectAutocomplete(String elementTitle, String value, String option) throws PageException {
+        WebElement element = ((HtmlFindUtils) Environment.getFindUtils()).find(elementTitle, true);
+        element.clear();
+        element.click();
+        element.sendKeys(value);
+        element.sendKeys(Keys.ENTER);
+        Waits.waitForPageToLoad();
+        List<WebElement> options = Waits.waitAndGetElements("//li/md-autocomplete-parent-scope", Waits.medium_wait, Waits.pollingTime, true);
+        WebElement optionElement = options.stream().filter(w -> w.getText().equals(option))
+                .collect(Collectors.toList()).get(0);
+        optionElement.click();
+        Waits.waitNotElementsLite("//li/md-autocomplete-parent-scope", Waits.medium_wait, Waits.pollingTime, Waits.pollingTime);
     }
 
 }

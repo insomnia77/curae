@@ -1,4 +1,5 @@
 #language = en
+@all
 Feature: AccountCreation
 
   Background:

@@ -17,6 +17,13 @@ public class PatientServiceDataPage extends HTMLPage {
     @FindBy(xpath = "//button[@ng-click=\"vm.openAdmissionSidebar('serviceArea-sidenav')\"]")
     private WebElement editAgency;
 
+    @ElementTitle(value = "Expand Physician and Insurance Info")
+    @FindBy(xpath = "//*[@class='md-title' and text()='Physician and Insurance Info']/parent::md-expansion-panel-collapsed/md-icon")
+    private WebElement expandPhysicianandInsuranceInfo;
+
+    @ElementTitle(value = "Edit Insurance Info")
+    @FindBy(xpath = "//button[@ng-click=\"vm.openAdmissionSidebar('insuranceinfo-sidenav')\"]")
+    private WebElement editInsuranceInfo;
 
     public PatientServiceDataPage() {
         long startTime = Now();
