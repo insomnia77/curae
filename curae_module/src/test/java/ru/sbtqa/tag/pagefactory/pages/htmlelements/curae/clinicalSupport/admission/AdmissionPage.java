@@ -36,6 +36,10 @@ public class AdmissionPage extends HTMLPage {
     @FindBy(xpath = "//button[@ng-click=\"vm.openPatientInfo(admissionKey)\"]")
     private WebElement patientInfo;
 
+    @ElementTitle(value = "first patient")
+    @FindBy(xpath = "//button[@ng-click=\"vm.openPatient(admissionKey)\"]")
+    private WebElement firstPatient;
+
     public AdmissionPage() {
         long startTime = Now();
         Waits.waitForPageToLoad();

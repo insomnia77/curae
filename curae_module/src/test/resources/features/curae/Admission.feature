@@ -8,8 +8,8 @@ Feature: admission
     * user fills the field "Password" with value "password"
     * user clicks the button "Log in"
 
-  @admission @data=$PatientContactInfo
-  Scenario Outline: admission
+  @FirstPatientNewAdmission @data=$PatientContactInfo @data=$PatientBasicInfo
+  Scenario Outline: FirstPatientNewAdmission
     * user performs "createPatient" scenario
       | searchByName   | firstName   | lastName   | middleName   | gender   | birthDate   | patientNumberName   | patientNumber   | patientNumberName2   | patientNumber2   | patientNumberName3   | patientNumber3   |
       | <searchByName> | <firstName> | <lastName> | <middleName> | <gender> | <birthDate> | <patientNumberName> | <patientNumber> | <patientNumberName2> | <patientNumber2> | <patientNumberName3> | <patientNumber3> |
@@ -34,9 +34,9 @@ Feature: admission
     * user is on the page "PatientInfoPage"
     * user selects the checkbox "Same As Contact Address"
     * ? user clicks the button "Edit Contact Info"
+
     * user clicks element via javascript "Edit Contact Info"
     * user is on the page "PatientContactInfoPage"
-
     * user fills the field "Address" with value "$PatientContactInfo{address}"
     * user fills the field "City" with value "$PatientContactInfo{city}"
     * user fills the field "County" with value "$PatientContactInfo{county}"
@@ -47,11 +47,45 @@ Feature: admission
     * user fills the field "Primary Contact Note" with value "$PatientContactInfo{Contact Note}"
     * user fills the field "Secondary Contact Phone Number" with value "$PatientContactInfo{Contact Num2}"
     * user fills the field "Secondary Contact Note" with value "$PatientContactInfo{Contact Note2}"
-    * breakpoint
+    * user clicks the button "UPDATE"
+    * user is on the page "PatientInfoPage"
+
+    * ? user clicks the button "Edit Basic Info"
+    * user clicks element via javascript "Edit Basic Info"
+    * user is on the page "PatientBasicInfoPage"
+    * user fills the field "Weight" with value "$PatientBasicInfo{Weight}"
+    * user fills the field "Height" with value "$PatientBasicInfo{Height}"
+    * user clicks the button "UPDATE"
+    * user is on the page "PatientInfoPage"
+
+    * ? user clicks the button "Edit Primary Caregiver Info"
+    * user clicks element via javascript "Edit Primary Caregiver Info"
+    * user is on the page "PatientPrimaryCareGiverInfoPage"
+    * user fills the field "Name" with value "$PatientPrimaryCaregiverInfo{Name}"
+    * user selects in dropdown "Relationship" the value "$PatientPrimaryCaregiverInfo{Relationship}"
+    * user fills the field "Phone Number" with value "$PatientPrimaryCaregiverInfo{Phone Number}"
+    * user scrolls to element "UPDATE"
+    * user fills the field "Mobile Number" with value "$PatientPrimaryCaregiverInfo{Mobile Number}"
+    * user fills the field "Work Number" with value "$PatientPrimaryCaregiverInfo{Work Number}"
+    * user fills the field "Home Address" with value "$PatientPrimaryCaregiverInfo{Home Address}"
     * user clicks the button "UPDATE"
 
+    #todo: add clear
+#    * user is on the page "AdmissionPage"
+#    * ? user clicks the button "search button"
+#    * user clicks element via javascript "search button"
+#    * user checks that text "Loading More Admissions" is absent on the page
+#    * user fills the field "search bar" with value "<searchValue>"
+    * user is on the page "AdmissionPage"
 
-    # "$Teams{teams}"
+    * user clicks the button "first patient"
+    * user is on the page "PatientServiceDataPage"
+    * user clicks the button "Edit Agency"
+    * user is on the page "AgencyAndServiceAreaPage"
+    * user selects in dropdown "Agency:" the value "$PatientServiceData{Agency:}"
+    * user selects in dropdown "Service Area:" the value "$PatientServiceData{Service Area:}"
+    * user clicks the button "UPDATE"
+    * breakpoint
 
     Examples:
       | searchByName | firstName   | lastName        | middleName | gender | searchValue   | birthDate  | patientNumberName | patientNumber | patientNumberName2 | patientNumber2 | patientNumberName3   | patientNumber3 |
