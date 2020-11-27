@@ -28,6 +28,7 @@ public class HomePage extends HTMLPage {
     public HomePage() {
         long startTime = Now();
         Waits.waitForPageToLoad();
+        Waits.waitNotElementsLite("//md-progress-circular[@role='progressbar']", Waits.big_wait, Waits.MinPollingTime, 1);
         Waits.addPageLoadTimeToAllure(startTime);
     }
 

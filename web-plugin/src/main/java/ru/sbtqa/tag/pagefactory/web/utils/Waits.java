@@ -214,10 +214,10 @@ public class Waits {
         try {
             List<WebElement> elements = null;
             List<WebElement> invisibleElements = null;
-//            if (waitAndGetElements(xpath, startWaitForPresent, pollingTime).isEmpty()) {
-//                log.trace("элементы " + xpath + " не появились");
-//                return;
-//            }
+            if (waitAndGetElements(xpath, startWaitForPresent, pollingTime).isEmpty()) {
+                log.trace("элементы " + xpath + " не появились");
+                return;
+            }
             log.trace("ожидание исчезновения элемента :" +(Now() - startTimeLite));
             while (!(((Now() - startTimeLite) / 1000) > timeout)) {
                 if((elements== null) || ((Now() - startTimeLite) / 1000> timeout))

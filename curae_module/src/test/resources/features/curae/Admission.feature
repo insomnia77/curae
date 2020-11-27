@@ -7,24 +7,28 @@ Feature: admission
     * user fills the field "User Name" with value "test.qa@cvhcare.com"
     * user fills the field "Password" with value "password"
     * user clicks the button "Log in"
-    #todo: add polling loader
-    * user waits "5" seconds
 
   @admission
   Scenario Outline: admission
     * user performs "createPatient" scenario
       | searchByName   | firstName   | lastName   | middleName   | gender   | birthDate   | patientNumberName   | patientNumber   | patientNumberName2   | patientNumber2   | patientNumberName3   | patientNumber3   |
       | <searchByName> | <firstName> | <lastName> | <middleName> | <gender> | <birthDate> | <patientNumberName> | <patientNumber> | <patientNumberName2> | <patientNumber2> | <patientNumberName3> | <patientNumber3> |
-    * user is on the page "HomePage"
-    * user clicks the button "Administration"
+    * breakpoint
+    * ? user clicks the button "Administration"
+    * user clicks element via javascript "Administration"
     * user is on the page "AdministrationPage"
-    * user clicks the button "Clinical Support"
+    * ? user clicks the button "Clinical Support"
+    * user clicks element via javascript "Clinical Support"
     * user is on the page "ClinicalSupportPage"
-    * user clicks the button "Admission"
+    * ? user clicks the button "Admission"
+    * user clicks element via javascript "Admission"
     * user is on the page "AdmissionPage"
     * user clicks the button "In Processing"
     * user is on the page "AdmissionPage"
-    * user clicks the button "search button"
+    * ? user clicks the button "search button"
+    * user clicks element via javascript "search button"
+    * breakpoint
+    * user checks that text "Loading More Admissions" is absent on the page
     * user fills the field "search bar" with value "<searchValue>"
     * user is on the page "AdmissionPage"
     * user clicks the button "patient info"
@@ -33,8 +37,9 @@ Feature: admission
     * user clicks the button "Edit Contact Info"
 
     Examples:
-      | searchByName | firstName | lastName      | middleName | gender | searchValue | birthDate  | patientNumberName | patientNumber | patientNumberName2 | patientNumber2 | patientNumberName3   | patientNumber3 |
-      | 123          | test1     | Test lastname | A          | Male   | test7       | 03-10-1993 | MBI Number        | 0015          | Medicaid Number    | 0016           | Kaiser Policy Number | 0017           |
+      | searchByName | firstName   | lastName        | middleName | gender | searchValue | birthDate  | patientNumberName | patientNumber | patientNumberName2 | patientNumber2 | patientNumberName3   | patientNumber3 |
+      #| 123          | test1     | Test lastname | A          | Male   | test7       | 03-10-1993 | MBI Number        | 0015          | Medicaid Number    | 0016           | Kaiser Policy Number | 0017           |
+      | 123          | random name | random lastname | A          | Male   | test7       | 03-10-1993 | MBI Number        | 0015          | Medicaid Number    | 0016           | Kaiser Policy Number | 0017           |
 
 
 

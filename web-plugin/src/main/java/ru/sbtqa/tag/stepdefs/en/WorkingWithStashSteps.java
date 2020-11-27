@@ -9,6 +9,7 @@ import ru.sbtqa.tag.datajack.Stash;
 import ru.sbtqa.tag.pagefactory.context.PageContext;
 import ru.sbtqa.tag.pagefactory.environment.Environment;
 import ru.sbtqa.tag.pagefactory.exceptions.AllureNonCriticalError;
+import ru.sbtqa.tag.pagefactory.web.utils.Converter;
 import ru.sbtqa.tag.qautils.errors.AutotestError;
 
 import java.util.List;
@@ -29,9 +30,11 @@ public class WorkingWithStashSteps {
 
     @Given("^stores the value \"([^\"]*)\" in a variable \"([^\"]*)\"$")
     public void putInStash(String value, String key) {
-       if(!value.equals("не изменяем предыдущее запомненное значение")) {
-           Stash.put(key, value);
-       }
+        if (!value.equals("do nothing with previous value")) {
+            String convertedValue = new Converter().transform(value);
+            Stash.put(key, convertedValue);
+            System.out.println("Stored value equals " + convertedValue);
+        }
     }
 
     @Then("^check action list parameters \\((.*?)\\)$")

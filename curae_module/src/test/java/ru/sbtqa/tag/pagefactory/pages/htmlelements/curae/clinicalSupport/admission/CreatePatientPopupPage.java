@@ -1,4 +1,4 @@
-package ru.sbtqa.tag.pagefactory.pages.htmlelements.curae;
+package ru.sbtqa.tag.pagefactory.pages.htmlelements.curae.clinicalSupport.admission;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -11,6 +11,10 @@ import static ru.sbtqa.tag.pagefactory.web.utils.Waits.Now;
 
 @PageEntry(title = "CreatePatientPopupPage")
 public class CreatePatientPopupPage extends HTMLPage {
+
+    @ElementTitle(value = "pageBody")
+    @FindBy(xpath = "//md-toolbar//span[text()='New Admission']")
+    private WebElement pageBody;
 
     @ElementTitle(value = "Search by patient name")
     @FindBy(xpath = "//input[@type='search']")
@@ -41,12 +45,28 @@ public class CreatePatientPopupPage extends HTMLPage {
     private WebElement addButton;
 
     @ElementTitle(value = "Patient Number Name")
-    @FindBy(xpath = "//md-select[@name=\"patientInsurance\"]")
+    @FindBy(xpath = "(//md-select[@name=\"patientInsurance\"])[1]")
     private WebElement patientNumberNameDropDown;
 
+    @ElementTitle(value = "Patient Number Name 2")
+    @FindBy(xpath = "(//md-select[@name=\"patientInsurance\"])[2]")
+    private WebElement patientNumberNameDropDown2;
+
+    @ElementTitle(value = "Patient Number Name 3")
+    @FindBy(xpath = "(//md-select[@name=\"patientInsurance\"])[3]")
+    private WebElement patientNumberNameDropDown3;
+
     @ElementTitle(value = "Patient Numbers")
-    @FindBy(xpath = "//input[@ng-model=\"patientNumber.number\"]")
+    @FindBy(xpath = "(//input[@ng-model=\"patientNumber.number\"])[1]")
     private WebElement patientNumbers;
+
+    @ElementTitle(value = "Patient Numbers 2")
+    @FindBy(xpath = "(//input[@ng-model=\"patientNumber.number\"])[2]")
+    private WebElement patientNumbers2;
+
+    @ElementTitle(value = "Patient Numbers 3")
+    @FindBy(xpath = "(//input[@ng-model=\"patientNumber.number\"])[3]")
+    private WebElement patientNumbers3;
 
     @ElementTitle(value = "CONFIRM")
     @FindBy(xpath = "//button[@ng-click=\"vm.addNewClick()\"]")

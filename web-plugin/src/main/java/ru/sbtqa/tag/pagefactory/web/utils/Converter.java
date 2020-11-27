@@ -155,19 +155,19 @@ public class Converter {
                 String number8 = String.valueOf(ThreadLocalRandom.current().nextInt(11, 99)) + "16 " + String.valueOf(ThreadLocalRandom.current().nextInt(111111, 999999));
                 System.out.println(number8);
                 return number8;
-            case "случайная фамилия":
+            case "random lastname":
                 String last_name = randomIdentifier().substring(0,4);
                 System.out.println(last_name);
                 return last_name;
-            case "случайнаяфамилия":
+            case "randomlastname":
                 String last_name2 = randomIdentifier().substring(0,4);
                 System.out.println(last_name2);
                 return last_name2;
-            case "случайное имя":
+            case "random name":
                 String name = randomIdentifier().substring(0,4);
                 System.out.println(name);
                 return name;
-            case "случайноеимя":
+            case "randomname":
                 String name2 = randomIdentifier().substring(0,4);
                 System.out.println(name2);
                 return name2;
