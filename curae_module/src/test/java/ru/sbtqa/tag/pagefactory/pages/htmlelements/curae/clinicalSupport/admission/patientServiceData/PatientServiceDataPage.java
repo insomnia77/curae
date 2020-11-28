@@ -25,6 +25,10 @@ public class PatientServiceDataPage extends HTMLPage {
     @FindBy(xpath = "//button[@ng-click=\"vm.openAdmissionSidebar('insuranceinfo-sidenav')\"]")
     private WebElement editInsuranceInfo;
 
+    @ElementTitle(value = "Edit Primary Physicians")
+    @FindBy(xpath = "//button[@ng-click=\"vm.openAdmissionSidebar('primaryphysicianinfo-sidenav', $event)\"]")
+    private WebElement editPrimaryPhysicians;
+
     public PatientServiceDataPage() {
         long startTime = Now();
         Waits.waitForPageToLoad();
