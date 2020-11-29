@@ -21,6 +21,10 @@ public class PatientServiceDataPage extends HTMLPage {
     @FindBy(xpath = "//*[@class='md-title' and text()='Physician and Insurance Info']/parent::md-expansion-panel-collapsed/md-icon")
     private WebElement expandPhysicianandInsuranceInfo;
 
+    @ElementTitle(value = "Expand Approval Info")
+    @FindBy(xpath = "//*[@class='md-title' and text()='Approval Info']/parent::md-expansion-panel-collapsed/md-icon")
+    private WebElement expandApprovalInfo;
+
     @ElementTitle(value = "Edit Insurance Info")
     @FindBy(xpath = "//button[@ng-click=\"vm.openAdmissionSidebar('insuranceinfo-sidenav')\"]")
     private WebElement editInsuranceInfo;
@@ -32,6 +36,10 @@ public class PatientServiceDataPage extends HTMLPage {
     @ElementTitle(value = "Edit Pre-Auth Info")
     @FindBy(xpath = "//button[@ng-click=\"vm.openAdmissionSidebar('preauthinfo-sidenav')\"]")
     private WebElement editPreAuthInfo;
+
+    @ElementTitle(value = "Edit Approval Info")
+    @FindBy(xpath = "//button[@ng-click=\"vm.openAdmissionSidebar('approvalinfo-sidenav')\"]")
+    private WebElement editApprovalInfo;
 
     public PatientServiceDataPage() {
         long startTime = Now();

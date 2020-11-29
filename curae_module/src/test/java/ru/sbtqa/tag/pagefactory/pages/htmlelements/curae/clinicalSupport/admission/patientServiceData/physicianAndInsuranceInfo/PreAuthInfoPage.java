@@ -49,8 +49,11 @@ public class PreAuthInfoPage extends HTMLPage {
         Waits.waitForPageToLoad();
         try {
             Waits.waitAndGetElements("//button[@aria-label='Confirm']", Waits.big_wait, Waits.pollingTime, true).get(0).click();
-        } catch (org.openqa.selenium.StaleElementReferenceException | org.openqa.selenium.ElementClickInterceptedException e) {
-            js.executeScript("arguments[0].click();",  Waits.waitAndGetElements("//button[@aria-label='Confirm']", Waits.big_wait, Waits.pollingTime, true).get(0));
+        } catch (org.openqa.selenium.StaleElementReferenceException | org.openqa.selenium.ElementClickInterceptedException | java.lang.IndexOutOfBoundsException e) {
+            List<WebElement> confirmations = Waits.waitAndGetElements("//button[@aria-label='Confirm']", Waits.big_wait, Waits.pollingTime, true);
+            if (confirmations.size() != 0) {
+                js.executeScript("arguments[0].click();",confirmations.get(0));
+            }
         }
         Waits.waitForPageToLoad();
         Waits.waitNotElementsLite("//button[@aria-label='Confirm']", Waits.big_wait, Waits.pollingTime, 1);
