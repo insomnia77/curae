@@ -291,12 +291,21 @@ Feature: admission
     * user selects in dropdown "Agency:" the value "$PatientServiceData{Agency:}"
     * user selects in dropdown "Service Area:" the value "$PatientServiceData{Service Area:}"
     * user clicks the button "UPDATE"
+    #todo: need to investigate, if you remove this double click on update next update in Approval info will not work
+    * user clicks element via javascript "UPDATE"
 
     * user is on the page "PatientServiceDataPage"
     * ? user clicks the button "Approval Info"
     * user clicks element via javascript "Expand Approval Info"
     * user clicks element via javascript "Edit Approval Info"
     * user is on the page "ApprovalInfoPage"
+    * user fills the field "Date" with value "03-10-2022"
+    * user selects in dropdown "Transfer Status Assigned" the value "Kaiser Transfer"
+    * user selects in dropdown "Admission Category" the value "Relationship Admit"
+    * user selects in dropdown "Patient Discharge Status" the value "Patient is at Home"
+    * user selects in dropdown "Special Program" the value "None"
+    * user selects in dropdown "Special Program" the value "COVID"
+    * user selects in dropdown "Special Program" the value "SNP"
     #todo
     * breakpoint
 
