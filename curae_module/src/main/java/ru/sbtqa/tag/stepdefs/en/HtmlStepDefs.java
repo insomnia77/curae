@@ -175,14 +175,14 @@ public class HtmlStepDefs {
         WebElement element = ((HtmlFindUtils) Environment.getFindUtils()).find(elementTitle, true);
         element.click();
         try {
-            Waits.waitAndGetElements("(//md-option/div[text()='" + option + "'])[last()] | (//md-option/span[text()='" + option + "'])[last()]", Waits.medium_wait, Waits.pollingTime, true).get(0).click();
+            Waits.waitAndGetElements("(//md-option/div[text()='" + option + "'])[last()] | (//span[text()='" + option + "']/parent::div/parent::md-option)[last()]", Waits.medium_wait, Waits.pollingTime, true).get(0).click();
         } catch (org.openqa.selenium.ElementNotInteractableException e) {
             System.out.println("Not Interactable dropdown, trying again");
-            WebElement dropDown = Waits.waitAndGetElements("(//md-option/div[text()='" + option + "'])[last()] | (//md-option/span[text()='" + option + "'])[last()]", Waits.medium_wait, Waits.pollingTime, true).get(0);
+            WebElement dropDown = Waits.waitAndGetElements("(//md-option/div[text()='" + option + "'])[last()] | (//span[text()='" + option + "']/parent::div/parent::md-option)[last()]", Waits.medium_wait, Waits.pollingTime, true).get(0);
             JavascriptExecutor js = Environment.getDriverService().getDriver();
             js.executeScript("arguments[0].click();", dropDown);
         }
-        Waits.waitNotElementsLite("//md-option/div[text()='" + option + "']", Waits.medium_wait, Waits.pollingTime, Waits.pollingTime);
+        Waits.waitNotElementsLite("(//md-option/div[text()='" + option + "'])[last()] | (//span[text()='" + option + "']/parent::div/parent::md-option)[last()]", Waits.medium_wait, Waits.pollingTime, Waits.pollingTime);
     }
 
     @And("^user fill in autocomplete \"([^\"]*)\" the value \"([^\"]*)\" and select option \"([^\"]*)\"$")

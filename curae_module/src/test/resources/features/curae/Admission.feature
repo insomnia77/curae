@@ -150,6 +150,7 @@ Feature: admission
     #* user clicks element via javascript "Expand Physician and Insurance Info"
     * user is on the page "PatientServiceDataPage"
     # TODO: button disabled on this patient
+    * breakpoint
     * user clicks the button "Edit Pre-Auth Info"
     * breakpoint
     * user is on the page "PreAuthInfoPage"
@@ -191,6 +192,7 @@ Feature: admission
     * user is on the page "PatientServiceDataPage"
 
     * user clicks the button "Expand Physician and Insurance Info"
+    * breakpoint
     * user waits "5" seconds
     * user is on the page "AdmissionPage"
     * user clicks the button "first patient"
@@ -291,8 +293,10 @@ Feature: admission
     * user selects in dropdown "Agency:" the value "$PatientServiceData{Agency:}"
     * user selects in dropdown "Service Area:" the value "$PatientServiceData{Service Area:}"
     * user clicks the button "UPDATE"
+    * user checks that text "Update" is absent on the page
     #todo: need to investigate, if you remove this double click on update next update in Approval info will not work
-    * user clicks element via javascript "UPDATE"
+    #* user clicks element via javascript "UPDATE"
+
 
     * user is on the page "PatientServiceDataPage"
     * ? user clicks the button "Approval Info"
@@ -303,6 +307,7 @@ Feature: admission
     * user selects in dropdown "Transfer Status Assigned" the value "Kaiser Transfer"
     * user selects in dropdown "Admission Category" the value "Relationship Admit"
     * user selects in dropdown "Patient Discharge Status" the value "Patient is at Home"
+    * breakpoint
     * user selects in dropdown "Special Program" the value "None"
     * user selects in dropdown "Special Program" the value "COVID"
     * user selects in dropdown "Special Program" the value "SNP"
