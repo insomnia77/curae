@@ -183,9 +183,6 @@ public class HtmlStepDefs {
             js.executeScript("arguments[0].click();", dropDown);
         }
         Waits.waitNotElementsLite("(//md-option/div[text()='" + option + "'])[last()] | (//span[text()='" + option + "']/parent::div/parent::md-option)[last()]", Waits.medium_wait, Waits.pollingTime, Waits.pollingTime);
-        // hide block
-//        WebElement body = Waits.waitAndGetElements("//body", Waits.medium_wait, Waits.pollingTime, false).get(0);
-//        body.click();
         Waits.waitForPageToLoad();
     }
 

@@ -41,6 +41,18 @@ public class PatientServiceDataPage extends HTMLPage {
     @FindBy(xpath = "//button[@ng-click=\"vm.openAdmissionSidebar('approvalinfo-sidenav')\"]")
     private WebElement editApprovalInfo;
 
+    @ElementTitle(value = "Expand Admission Requirements")
+    @FindBy(xpath = "//*[@class='md-title' and contains(text(), 'Admission Requirements')]/parent::md-expansion-panel-collapsed/md-icon")
+    private WebElement ExpandAdmissionRequirements;
+
+    @ElementTitle(value = "Edit Admission Requirements")
+    @FindBy(xpath = "//button[@aria-label=\"Edit Admission Requirements\"]")
+    private WebElement EditAdmissionRequirements;
+
+    @ElementTitle(value = "Expand Special Orders")
+    @FindBy(xpath = "//*[@class='md-title' and contains(text(), 'Special Orders')]/parent::md-expansion-panel-collapsed/md-icon")
+    private WebElement ExpandSpecialOrders;
+
     public PatientServiceDataPage() {
         long startTime = Now();
         Waits.waitForPageToLoad();

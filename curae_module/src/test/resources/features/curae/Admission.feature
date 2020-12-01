@@ -300,7 +300,10 @@ Feature: admission
     * user clicks element via javascript "Expand Approval Info"
     * user clicks element via javascript "Edit Approval Info"
     * user is on the page "ApprovalInfoPage"
-    * user fills the field "Date" with value "03-10-2022"
+    #* user fills the field "Date" with value "03-10-2022"
+    * user clears field "Date"
+    * user fills the field via javascript "Date" with value "03-10-2022"
+    * user is on the page "ApprovalInfoPage"
     * user selects in dropdown "Transfer Status Assigned" the value "Kaiser Transfer"
     * user selects in dropdown "Admission Category" the value "Relationship Admit"
     * user selects in dropdown "Patient Discharge Status" the value "Patient is at Home"
@@ -318,6 +321,101 @@ Feature: admission
 
     Examples:
       | searchByName | firstName   | lastName        | middleName | gender | searchValue   | birthDate  | patientNumberName | patientNumber | patientNumberName2 | patientNumber2 | patientNumberName3   | patientNumber3 |
-      #| 123          | test1     | Test lastname | A          | Male   | test7       | 03-10-1993 | MBI Number        | 0015          | Medicaid Number    | 0016           | Kaiser Policy Number | 0017           |
+      | 123          | random name | random lastname | A          | Male   | #{~firstName} | 03-10-1993 | MBI Number        | 0015          | Medicaid Number    | 0016           | Kaiser Policy Number | 0017           |
+
+  @FirstPatientNewAdmissionRequirements
+  Scenario Outline: FirstPatientNewAdmissionRequirements
+    * user performs "createPatient" scenario
+      | searchByName   | firstName   | lastName   | middleName   | gender   | birthDate   | patientNumberName   | patientNumber   | patientNumberName2   | patientNumber2   | patientNumberName3   | patientNumber3   |
+      | <searchByName> | <firstName> | <lastName> | <middleName> | <gender> | <birthDate> | <patientNumberName> | <patientNumber> | <patientNumberName2> | <patientNumber2> | <patientNumberName3> | <patientNumber3> |
+    * ? user clicks the button "Administration"
+    * user clicks element via javascript "Administration"
+    * user is on the page "AdministrationPage"
+    * ? user clicks the button "Clinical Support"
+    * user clicks element via javascript "Clinical Support"
+    * user is on the page "ClinicalSupportPage"
+    * ? user clicks the button "Admission"
+    * user clicks element via javascript "Admission"
+    * user is on the page "AdmissionPage"
+    * ? user clicks the button "In Processing"
+    * user clicks element via javascript "In Processing"
+    * user is on the page "AdmissionPage"
+    * ? user clicks the button "search button"
+    * user clicks element via javascript "search button"
+    * user checks that text "Loading More Admissions" is absent on the page
+    * user fills the field "search bar" with value "<searchValue>"
+    * user is on the page "AdmissionPage"
+
+    * user clicks the button "first patient"
+    * user is on the page "PatientServiceDataPage"
+    * ? user clicks the button "Expand Admission Requirements"
+    * user clicks element via javascript "Expand Admission Requirements"
+    * user clicks element via javascript "Edit Admission Requirements"
+    * user is on the page "AdmissionRequirementsPage"
+    * user fill in autocomplete "Referral Contact" the value "cheng" and select option "TINA Y.F. CHENG"
+    * user is on the page "AdmissionRequirementsPage"
+    * user fill in autocomplete "Referral Account" the value "norman" and select option "Norman Cheung MD"
+    * user selects in dropdown "Home Health Orders" the value "Yes"
+    #todo: Skilled Nursing
+    * breakpoint
+    * ? user clicks the button "UPDATE"
+    * user clicks element via javascript "UPDATE"
+
+
+
+
+    Examples:
+      | searchByName | firstName   | lastName        | middleName | gender | searchValue   | birthDate  | patientNumberName | patientNumber | patientNumberName2 | patientNumber2 | patientNumberName3   | patientNumber3 |
+      | 123          | random name | random lastname | A          | Male   | #{~firstName} | 03-10-1993 | MBI Number        | 0015          | Medicaid Number    | 0016           | Kaiser Policy Number | 0017           |
+
+  @FirstPatientNewSpecialOrders
+  Scenario Outline: FirstPatientNewSpecialOrders
+    * user performs "createPatient" scenario
+      | searchByName   | firstName   | lastName   | middleName   | gender   | birthDate   | patientNumberName   | patientNumber   | patientNumberName2   | patientNumber2   | patientNumberName3   | patientNumber3   |
+      | <searchByName> | <firstName> | <lastName> | <middleName> | <gender> | <birthDate> | <patientNumberName> | <patientNumber> | <patientNumberName2> | <patientNumber2> | <patientNumberName3> | <patientNumber3> |
+    * ? user clicks the button "Administration"
+    * user clicks element via javascript "Administration"
+    * user is on the page "AdministrationPage"
+    * ? user clicks the button "Clinical Support"
+    * user clicks element via javascript "Clinical Support"
+    * user is on the page "ClinicalSupportPage"
+    * ? user clicks the button "Admission"
+    * user clicks element via javascript "Admission"
+    * user is on the page "AdmissionPage"
+    * ? user clicks the button "In Processing"
+    * user clicks element via javascript "In Processing"
+    * user is on the page "AdmissionPage"
+    * ? user clicks the button "search button"
+    * user clicks element via javascript "search button"
+    * user checks that text "Loading More Admissions" is absent on the page
+    * user fills the field "search bar" with value "<searchValue>"
+    * user is on the page "AdmissionPage"
+
+    * user clicks the button "first patient"
+    * user is on the page "PatientServiceDataPage"
+    * user clicks the button "Expand Special Orders"
+    * user is on the page "LabDrawPage"
+    * user clicks element via javascript "Ordered"
+    * user clicks the button "Edit Lab Draw"
+    * user is on the page "LabDrawPage"
+    * user selects the checkbox "PT/INR"
+    * user selects the checkbox "BMP"
+    * user selects the checkbox "CMP"
+    * user selects the checkbox "CBC"
+    * user selects the checkbox "H&H"
+    * user selects the checkbox "ESR"
+    * user selects the checkbox "CRP"
+    * user selects the checkbox "HA1C"
+    * user selects the checkbox "UA"
+    * user selects the checkbox "C&S"
+    * user selects the checkbox "Others"
+    * user fills the field "Special Instructions" with value "Test Insturctions"
+    * user clicks element via javascript "UPDATE"
+    * breakpoint
+
+
+
+    Examples:
+      | searchByName | firstName   | lastName        | middleName | gender | searchValue   | birthDate  | patientNumberName | patientNumber | patientNumberName2 | patientNumber2 | patientNumberName3   | patientNumber3 |
       | 123          | random name | random lastname | A          | Male   | #{~firstName} | 03-10-1993 | MBI Number        | 0015          | Medicaid Number    | 0016           | Kaiser Policy Number | 0017           |
 
