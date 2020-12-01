@@ -31,9 +31,4 @@ public class LoginPage extends HTMLPage {
         Waits.addPageLoadTimeToAllure(startTime);
     }
 
-    @ActionTitle("selects first item with home team")
-    public void checksTickets(String HomeTeam) {
-        Waits.waitAndGetElements("//table[@id='MainContent_ShoppingCartGridView']//td[text() = '"+HomeTeam+"']/parent::tr//input", Waits.medium_wait, Waits.pollingTime, true)
-                .get(0).click();
-    }
 }

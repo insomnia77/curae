@@ -294,9 +294,6 @@ Feature: admission
     * user selects in dropdown "Service Area:" the value "$PatientServiceData{Service Area:}"
     * user clicks the button "UPDATE"
     * user checks that text "Update" is absent on the page
-    #todo: need to investigate, if you remove this double click on update next update in Approval info will not work
-    #* user clicks element via javascript "UPDATE"
-
 
     * user is on the page "PatientServiceDataPage"
     * ? user clicks the button "Approval Info"
@@ -307,12 +304,17 @@ Feature: admission
     * user selects in dropdown "Transfer Status Assigned" the value "Kaiser Transfer"
     * user selects in dropdown "Admission Category" the value "Relationship Admit"
     * user selects in dropdown "Patient Discharge Status" the value "Patient is at Home"
-    * breakpoint
-    * user selects in dropdown "Special Program" the value "None"
-    * user selects in dropdown "Special Program" the value "COVID"
-    * user selects in dropdown "Special Program" the value "SNP"
-    #todo
-    * breakpoint
+   #todo: there is defect and unselect is workaround
+    * user (unselect all special programs)
+    * user clicks the button "pageBody"
+    * user performs "selectAllSpecialPrograms" scenario
+    * user is on the page "ApprovalInfoPage"
+    * user selects in dropdown "Admission Source" the value "Community"
+    * user selects in dropdown "Emergency Triage Code" the value "Emergent"
+    * ? user clicks the button "UPDATE"
+    * user clicks element via javascript "UPDATE"
+
+
 
     Examples:
       | searchByName | firstName   | lastName        | middleName | gender | searchValue   | birthDate  | patientNumberName | patientNumber | patientNumberName2 | patientNumber2 | patientNumberName3   | patientNumber3 |

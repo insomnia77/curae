@@ -54,6 +54,13 @@ public class WebDriverCapabilitiesParser implements CapabilitiesParser {
             capabilities.setCapability(ChromeOptions.CAPABILITY, chromeOptions);
         }
 
+        if (BrowserName.CHROME.equals(WebEnvironment.getBrowserName()) && (Props.get("webdriver.chrome.mode").equals("incognito"))) {
+            ChromeOptions options = new ChromeOptions();
+            options.addArguments("--incognito");
+            capabilities.setCapability(ChromeOptions.CAPABILITY, options);
+            options.merge(capabilities);
+        }
+
         return capabilities;
     }
 
