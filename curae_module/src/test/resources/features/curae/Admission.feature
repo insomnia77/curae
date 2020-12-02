@@ -348,6 +348,22 @@ Feature: admission
 
     * user clicks the button "first patient"
     * user is on the page "PatientServiceDataPage"
+
+    #this block not from excel - it's for skilled nurses
+    * user is on the page "PatientServiceDataPage"
+    * ? user clicks the button "Expand Physician and Insurance Info"
+    * user clicks element via javascript "Expand Physician and Insurance Info"
+    * user clicks element via javascript "Edit Insurance Info"
+    * user is on the page "InsuranceInfoPage"
+    * ? user fills the field "SOC Date" with value "12-10-2020"
+    * user fills the field via javascript "SOC Date" with value "12-10-2020"
+    * user fills the field "Insurance Authorization Code" with value "4565464"
+    * user fill in autocomplete "Primary Insurance" the value "NGS" and select option "NGS"
+    * user selects in dropdown "DDE Verification Printed and Filed" the value "Yes"
+    * user clicks the button "UPDATE"
+    ######
+
+    * user is on the page "PatientServiceDataPage"
     * ? user clicks the button "Expand Admission Requirements"
     * user clicks element via javascript "Expand Admission Requirements"
     * user clicks element via javascript "Edit Admission Requirements"
@@ -356,7 +372,13 @@ Feature: admission
     * user is on the page "AdmissionRequirementsPage"
     * user fill in autocomplete "Referral Account" the value "norman" and select option "Norman Cheung MD"
     * user selects in dropdown "Home Health Orders" the value "Yes"
-    #todo: Skilled Nursing
+    * user selects the checkbox "Skilled Nursing"
+    * user selects the checkbox "Physical Therapy"
+    * user selects the checkbox "Occupational Therapy"
+    * user selects the checkbox "Speech Therapy"
+    * user selects the checkbox "Registered Dietician"
+    * user selects the checkbox "Medical Social Services"
+    * user selects the checkbox "Certified Home Health Aide"
     * breakpoint
     * ? user clicks the button "UPDATE"
     * user clicks element via javascript "UPDATE"
