@@ -12,7 +12,7 @@ import java.util.List;
 public class WorkingWithTablesStepDefs {
 
     /**
-     * Проверяет, что есть хотя бы одна такая строка в таблице
+     * Check that there is any row in the table
      *
      * @param table_id
      * @param fieldNames

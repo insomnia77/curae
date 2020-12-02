@@ -13,6 +13,7 @@ Feature: admission
   @FirstPatientNewAdmissionPatientInfo @data=$PatientContactInfo @data=$PatientBasicInfo
   Scenario Outline: FirstPatientNewAdmission
     * user performs "createPatient" scenario
+    * user performs "goToHomePage" scenario
       | searchByName   | firstName   | lastName   | middleName   | gender   | birthDate   | patientNumberName   | patientNumber   | patientNumberName2   | patientNumber2   | patientNumberName3   | patientNumber3   |
       | <searchByName> | <firstName> | <lastName> | <middleName> | <gender> | <birthDate> | <patientNumberName> | <patientNumber> | <patientNumberName2> | <patientNumber2> | <patientNumberName3> | <patientNumber3> |
     * ? user clicks the button "Administration"
@@ -81,7 +82,6 @@ Feature: admission
     * user selects in dropdown "Service Area:" the value "$PatientServiceData{Service Area:}"
     * user clicks the button "UPDATE"
 
-
     Examples:
       | searchByName | firstName   | lastName        | middleName | gender | searchValue   | birthDate  | patientNumberName | patientNumber | patientNumberName2 | patientNumber2 | patientNumberName3   | patientNumber3 |
       #| 123          | test1     | Test lastname | A          | Male   | test7       | 03-10-1993 | MBI Number        | 0015          | Medicaid Number    | 0016           | Kaiser Policy Number | 0017           |
@@ -90,6 +90,7 @@ Feature: admission
   @FirstPatientNewAdmissionServiceData @data=$PatientServiceData
   Scenario Outline: FirstPatientNewAdmissionServiceData
     * user performs "createPatient" scenario
+    * user performs "goToHomePage" scenario
       | searchByName   | firstName   | lastName   | middleName   | gender   | birthDate   | patientNumberName   | patientNumber   | patientNumberName2   | patientNumber2   | patientNumberName3   | patientNumber3   |
       | <searchByName> | <firstName> | <lastName> | <middleName> | <gender> | <birthDate> | <patientNumberName> | <patientNumber> | <patientNumberName2> | <patientNumber2> | <patientNumberName3> | <patientNumber3> |
     * ? user clicks the button "Administration"
@@ -266,6 +267,7 @@ Feature: admission
   @FirstPatientNewAdmissionApprovalInfo @data=$PatientServiceData
   Scenario Outline: FirstPatientNewAdmissionServiceData
     * user performs "createPatient" scenario
+    * user performs "goToHomePage" scenario
       | searchByName   | firstName   | lastName   | middleName   | gender   | birthDate   | patientNumberName   | patientNumber   | patientNumberName2   | patientNumber2   | patientNumberName3   | patientNumber3   |
       | <searchByName> | <firstName> | <lastName> | <middleName> | <gender> | <birthDate> | <patientNumberName> | <patientNumber> | <patientNumberName2> | <patientNumber2> | <patientNumberName3> | <patientNumber3> |
     * ? user clicks the button "Administration"
@@ -318,7 +320,6 @@ Feature: admission
     * user clicks element via javascript "UPDATE"
 
 
-
     Examples:
       | searchByName | firstName   | lastName        | middleName | gender | searchValue   | birthDate  | patientNumberName | patientNumber | patientNumberName2 | patientNumber2 | patientNumberName3   | patientNumber3 |
       | 123          | random name | random lastname | A          | Male   | #{~firstName} | 03-10-1993 | MBI Number        | 0015          | Medicaid Number    | 0016           | Kaiser Policy Number | 0017           |
@@ -326,6 +327,7 @@ Feature: admission
   @FirstPatientNewAdmissionRequirements
   Scenario Outline: FirstPatientNewAdmissionRequirements
     * user performs "createPatient" scenario
+    * user performs "goToHomePage" scenario
       | searchByName   | firstName   | lastName   | middleName   | gender   | birthDate   | patientNumberName   | patientNumber   | patientNumberName2   | patientNumber2   | patientNumberName3   | patientNumber3   |
       | <searchByName> | <firstName> | <lastName> | <middleName> | <gender> | <birthDate> | <patientNumberName> | <patientNumber> | <patientNumberName2> | <patientNumber2> | <patientNumberName3> | <patientNumber3> |
     * ? user clicks the button "Administration"
@@ -384,8 +386,6 @@ Feature: admission
     * user clicks element via javascript "UPDATE"
 
 
-
-
     Examples:
       | searchByName | firstName   | lastName        | middleName | gender | searchValue   | birthDate  | patientNumberName | patientNumber | patientNumberName2 | patientNumber2 | patientNumberName3   | patientNumber3 |
       | 123          | random name | random lastname | A          | Male   | #{~firstName} | 03-10-1993 | MBI Number        | 0015          | Medicaid Number    | 0016           | Kaiser Policy Number | 0017           |
@@ -393,6 +393,7 @@ Feature: admission
   @FirstPatientNewSpecialOrders
   Scenario Outline: FirstPatientNewSpecialOrders
     * user performs "createPatient" scenario
+    * user performs "goToHomePage" scenario
       | searchByName   | firstName   | lastName   | middleName   | gender   | birthDate   | patientNumberName   | patientNumber   | patientNumberName2   | patientNumber2   | patientNumberName3   | patientNumber3   |
       | <searchByName> | <firstName> | <lastName> | <middleName> | <gender> | <birthDate> | <patientNumberName> | <patientNumber> | <patientNumberName2> | <patientNumber2> | <patientNumberName3> | <patientNumber3> |
     * ? user clicks the button "Administration"
@@ -514,8 +515,6 @@ Feature: admission
     * user clicks element via javascript "UPDATE"
     * breakpoint
     #todo
-
-
 
     Examples:
       | searchByName | firstName   | lastName        | middleName | gender | searchValue   | birthDate  | patientNumberName | patientNumber | patientNumberName2 | patientNumber2 | patientNumberName3   | patientNumber3 |

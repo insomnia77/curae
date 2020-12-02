@@ -30,7 +30,7 @@ public class Waits {
     private static long timeoutPeriod;
     private static long startTime;
     private static Logger log = getLogger();
-    private static String NOT_FOUND_ELEMENT_ERROR_MESSAGE = "Ошибка при получении элемента. Проверьте синтаксическую правильность локатора";
+    private static String NOT_FOUND_ELEMENT_ERROR_MESSAGE = "Error when getting elements. Check xpath for element";
     private static Long timeout = 100L;
 
     public static long Now() {
@@ -41,7 +41,7 @@ public class Waits {
         try {
             Thread.sleep((int) (pollingTime * 1000));
         } catch (InterruptedException interrupt) {
-            log.error("проблема со sleep потока" + interrupt);
+            log.error("problem with sleep flow" + interrupt);
         }
     }
 
@@ -58,7 +58,7 @@ public class Waits {
 
     public static void addPageLoadTimeToAllure(long startTime) {
         long pageLoadTime = Now() - startTime;
-        Allure.addAttachment("Время загрузки страницы (ms): ", Long.toString(pageLoadTime));
+        Allure.addAttachment("Time of page loading (ms): ", Long.toString(pageLoadTime));
     }
 
 
@@ -95,7 +95,7 @@ public class Waits {
         List<WebElement> webElementList =
                 waitAndGetElements(by, timeout, pollingTime, Environment.getDriverService().getDriver(), false);
         if (webElementList.size() != 1) {
-            throw new Error("Для локатора: \"" + by + "\" количество элементнов не соответствует ожидаемому. Актуальное количество: " + webElementList.size());
+            throw new Error("For locator: \"" + by + "\" elements amount is not correspond to waiting. Actual amount: " + webElementList.size());
         }
         return webElementList.get(0);
     }
@@ -105,38 +105,38 @@ public class Waits {
     }
 
     /**
-     * Ожидание и получение элемента
+     * Waiting and getting of element
      *
-     * @param by          локатор элемента
-     * @param timeout     время ожиния элемента
-     * @param pollingTime тайм-аут проверки элемента
-     * @return список элементов
+     * @param by          locator of element
+     * @param timeout     time of element waiting
+     * @param pollingTime тtimeout of element verification
+     * @return list of elements
      */
     public static List<WebElement> waitAndGetElements(By by, double timeout, double pollingTime) {
         return waitAndGetElements(by, timeout, pollingTime, Environment.getDriverService().getDriver(), false);
     }
 
     /**
-     * Ожидание и получение элемента
+     * Waiting and getting of element
      *
-     * @param by               локатор элемента
-     * @param timeout          время ожиния элемента
-     * @param pollingTime      тайм-аут проверки элемента
+     * @param by               locator of element
+     * @param timeout          time of element waiting
+     * @param pollingTime      тtimeout of element verification
      * @param isFirstClickable
-     * @return список элементов
+     * @return list of elements
      */
     public static List<WebElement> waitAndGetElements(By by, double timeout, double pollingTime, boolean isFirstClickable) {
         return waitAndGetElements(by, timeout, pollingTime, Environment.getDriverService().getDriver(), isFirstClickable);
     }
 
     /**
-     * Ожидание и получение элемента
+     * Waiting and getting of element
      *
-     * @param by          локатор элемента
-     * @param timeout     время ожиния элемента
-     * @param pollingTime тайм-аут проверки элемента
+     * @param by          locator of element
+     * @param timeout     time of element waiting
+     * @param pollingTime тtimeout of element verification
      * @param driver      WebDriver
-     * @return список элементов
+     * @return list of elements
      */
     public static List<WebElement> waitAndGetElements(By by, double timeout, double pollingTime, WebDriver driver) {
         return waitAndGetElements(by, timeout, pollingTime, driver, false);
@@ -144,12 +144,12 @@ public class Waits {
 
 
     /**
-     * Ожидание и получение элемента
+     * Waiting and getting elements
      *
-     * @param XPATH          локатор элемента в xPath формате
-     * @param timeout     время ожиния элемента
-     * @param pollingTime тайм-аут проверки элемента
-     * @return список элементов
+     * @param XPATH       locator of element as xPath
+     * @param timeout     time of element waiting
+     * @param pollingTime timeout of element verification
+     * @return list of elements
      */
     public static List<WebElement> waitAndGetElements(String XPATH, double timeout, double pollingTime) {
         return waitAndGetElements(By.xpath(XPATH), timeout, pollingTime, Environment.getDriverService().getDriver(), false);
@@ -174,7 +174,7 @@ public class Waits {
                 log.error(NOT_FOUND_ELEMENT_ERROR_MESSAGE);
                 throw e;
             } catch (org.openqa.selenium.WebDriverException e2) {
-                log.error("Проблема с коммуникацией с драйвером - пробуем еще раз");
+                log.error("Problem with communication with driver - try again");
                 elements = driver.findElements(by);
             }
             if (!elements.isEmpty()) {
@@ -215,10 +215,10 @@ public class Waits {
             List<WebElement> elements = null;
             List<WebElement> invisibleElements = null;
             if (waitAndGetElements(xpath, startWaitForPresent, pollingTime).isEmpty()) {
-                log.trace("элементы " + xpath + " не появились");
+                log.trace("elements " + xpath + " are not displayed");
                 return;
             }
-            log.trace("ожидание исчезновения элемента :" +(Now() - startTimeLite));
+            log.trace("waiting of element disappearing :" +(Now() - startTimeLite));
             while (!(((Now() - startTimeLite) / 1000) > timeout)) {
                 if((elements== null) || ((Now() - startTimeLite) / 1000> timeout))
                 {
@@ -226,7 +226,7 @@ public class Waits {
                 }
                 waitPollingTime(pollingTime);
                 elements = Environment.getDriverService().getDriver().findElements(By.xpath(xpath));
-                log.trace("ожидание исчезновения элемента :" + (Now() - startTimeLite));
+                log.trace("waiting of element disappearing :" + (Now() - startTimeLite));
 
                 if((elements== null) || ((Now() - startTimeLite) / 1000> timeout))
                 {
@@ -244,12 +244,12 @@ public class Waits {
 
 
             if (elements.isEmpty() || (elements.size() == invisibleElements.size())) {
-                log.trace("элементы " + xpath + " появились и исчезли");
+                log.trace("elements " + xpath + " appeared and disappeared");
             } else {
-                log.trace("элементы " + xpath + " появились и не исчезли");
+                log.trace("elements " + xpath + " appeared and not disappeared");
             }
         } catch (org.openqa.selenium.StaleElementReferenceException stale) {
-            log.error("Не удалсь дождаться исчезновения элемента из-за изменения страницы или появления другого элемента");
+            log.error("Couldn't wait for an item to disappear due to a page change or the appearance of another item");
         }
     }
 
@@ -265,8 +265,8 @@ public class Waits {
         } catch (NullPointerException e)
         {
             Waits.waitPollingTime(3);
-            System.out.println("грузиться лоадер и counter не удается получить - такой эффект при загрузке документов");
-            Allure.addAttachment("waitsjs", "не отработал - нет counter");
+            System.out.println("loading of loader and counter can't get - this effect during documents uploading");
+            Allure.addAttachment("waitsjs", "didn't work - no counter");
         }
     }
 
@@ -282,7 +282,7 @@ public class Waits {
         } catch (NullPointerException e)
         {
             Waits.waitPollingTime(3);
-            Allure.addAttachment("waitsjs", "не отработал - нет counter");
+            Allure.addAttachment("waitsjs", "didn't work - no counter");
         }
     }
 

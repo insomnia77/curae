@@ -73,9 +73,9 @@ public class HtmlStepDefs {
             WebElement element = ((HtmlFindUtils) Environment.getFindUtils()).find(elementName, false);
             JavascriptExecutor js = Environment.getDriverService().getDriver();
             js.executeScript("arguments[0].click();", element);
-            System.out.println("C помощью JavaScript удалось сделать клик на " + elementName);
+            System.out.println("Using JavaScript couldn't click on " + elementName);
         } catch (Exception e) {
-            System.out.println("C помощью JavaScript не удалось сделать клик на " + elementName);
+            System.out.println("Using JavaScript couldn't click on " + elementName);
         }
     }
 
@@ -87,9 +87,9 @@ public class HtmlStepDefs {
             Actions builder = new Actions(webDriver);
             builder.moveToElement(element).perform();
             element.click();
-            System.out.println("удалось сделать клик на " + elementName);
+            System.out.println("can't click on " + elementName);
         } catch (Exception e) {
-            System.out.println("не удалось сделать клик на " + elementName);
+            System.out.println("can't click on " + elementName);
         }
     }
 

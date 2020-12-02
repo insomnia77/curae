@@ -21,7 +21,9 @@ Feature: createPatient
     * user clicks the button "pageBody"
     * user is on the page "CreatePatientPopupPage"
     * stores the value "<firstName>" in a variable "~firstName"
+   # * stores the value "<firstName>" in a variable "00ky"
     * user fills the field "Patient first name" with value "#{~firstName}"
+      # * user fills the field "Patient first name" with value "00ky"
     * stores the value "<lastName>" in a variable "~lastName"
     * user fills the field "Patient last name" with value "#{~lastName}"
     * user fills the field "Patient middle name" with value "<middleName>"
@@ -44,7 +46,3 @@ Feature: createPatient
     * user fills the field "Patient Numbers 3" with value "<patientNumber3>"
 
     * user clicks the button "CONFIRM"
-
-    * user is on the page "AdmissionPage"
-    * user clicks element via javascript "navigationBlock->Home"
-    * user is on the page "HomePage"
