@@ -169,7 +169,7 @@ Feature: admission
 
   #workaround, with huge static waits
   @PreAuthInfoWithOutCreatingNewPatient
-  Scenario: FirstPatientNewAdmissionServiceData
+  Scenario: PreAuthInfoWithOutCreatingNewPatient
     * user is on the page "HomePage"
     * ? user clicks the button "Administration"
     * user clicks element via javascript "Administration"
@@ -186,6 +186,7 @@ Feature: admission
     * ? user clicks the button "search button"
     * user clicks element via javascript "search button"
     * user checks that text "Loading More Admissions" is absent on the page
+    #todo Use a previous created Patient
     * user fills the field "search bar" with value "053b21c9af2e4b6 Snowman"
     * user is on the page "AdmissionPage"
 
@@ -265,7 +266,7 @@ Feature: admission
 
 
   @FirstPatientNewAdmissionApprovalInfo @data=$PatientServiceData
-  Scenario Outline: FirstPatientNewAdmissionServiceData
+  Scenario Outline: FirstPatientNewAdmissionApprovalInfo
     * user performs "createPatient" scenario
     * user performs "goToHomePage" scenario
       | searchByName   | firstName   | lastName   | middleName   | gender   | birthDate   | patientNumberName   | patientNumber   | patientNumberName2   | patientNumber2   | patientNumberName3   | patientNumber3   |
