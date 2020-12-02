@@ -351,6 +351,22 @@ Feature: admission
 
     * user clicks the button "first patient"
     * user is on the page "PatientServiceDataPage"
+
+    #this block not from excel - it's for skilled nurses
+    * user is on the page "PatientServiceDataPage"
+    * ? user clicks the button "Expand Physician and Insurance Info"
+    * user clicks element via javascript "Expand Physician and Insurance Info"
+    * user clicks element via javascript "Edit Insurance Info"
+    * user is on the page "InsuranceInfoPage"
+    * ? user fills the field "SOC Date" with value "12-10-2020"
+    * user fills the field via javascript "SOC Date" with value "12-10-2020"
+    * user fills the field "Insurance Authorization Code" with value "4565464"
+    * user fill in autocomplete "Primary Insurance" the value "NGS" and select option "NGS"
+    * user selects in dropdown "DDE Verification Printed and Filed" the value "Yes"
+    * user clicks the button "UPDATE"
+    ######
+
+    * user is on the page "PatientServiceDataPage"
     * ? user clicks the button "Expand Admission Requirements"
     * user clicks element via javascript "Expand Admission Requirements"
     * user clicks element via javascript "Edit Admission Requirements"
@@ -359,7 +375,13 @@ Feature: admission
     * user is on the page "AdmissionRequirementsPage"
     * user fill in autocomplete "Referral Account" the value "norman" and select option "Norman Cheung MD"
     * user selects in dropdown "Home Health Orders" the value "Yes"
-    #todo: Skilled Nursing
+    * user selects the checkbox "Skilled Nursing"
+    * user selects the checkbox "Physical Therapy"
+    * user selects the checkbox "Occupational Therapy"
+    * user selects the checkbox "Speech Therapy"
+    * user selects the checkbox "Registered Dietician"
+    * user selects the checkbox "Medical Social Services"
+    * user selects the checkbox "Certified Home Health Aide"
     * breakpoint
     * ? user clicks the button "UPDATE"
     * user clicks element via javascript "UPDATE"
@@ -492,10 +514,112 @@ Feature: admission
     * user selects in dropdown "Infusion Pharmacy" the value "John Muir Pharmacy"
     * user fills the field "Delivery of Supplies Information" with value "Test Dev Sup Info"
     * user clicks element via javascript "UPDATE"
+
+    * user is on the page "EnteralFeedingPage"
+    * user clicks element via javascript "Ordered"
+    * user clicks the button "Edit Enteral Feeding"
+    * user is on the page "EnteralFeedingPage"
+    * user clicks the button "NG Tube"
+    * user selects the checkbox "Formula Change"
+    * user is on the page "EnteralFeedingPage"
+    * user fills the field "Detail" with value "Test Details"
+    * user selects the checkbox "Bolus"
+    * user fills the field "cc" with value "1"
+    * user fills the field "hours" with value "1"
+    * user selects the checkbox "Continuous @"
+    * user fills the field "cc/hours" with value "1"
+    * user selects in dropdown "type" the value "Gravity"
+    * user clicks the button "UPDATE"
+
+    * user is on the page "OstomyPage"
+    * user clicks element via javascript "Ordered"
+    * user clicks the button "Edit Ostomy"
+    * user is on the page "OstomyPage"
+    * user clicks the button "Colostomy"
+    * user selects the checkbox "Stoma : Red"
+    * user selects the checkbox "Stoma : Pink"
+    * user selects the checkbox "Stoma : Moist"
+    * user selects the checkbox "Stoma : Dry"
+    * user selects the checkbox "Stoma : Pale"
+    * user selects the checkbox "Stoma : Swollen"
+    * user selects the checkbox "Skin : Intact"
+    * user selects the checkbox "Skin : Red"
+    * user selects the checkbox "Skin : Pale"
+    * user selects the checkbox "Skin : Swollen"
+    * user selects the checkbox "Skin : Dry"
+    * user selects the checkbox "Skin : Mecerated"
+    * user clicks the button "Stool Consistence : Soft"
+    * user clicks the button "Stool Appearance : Yellowish"
+    * user clicks the button "UPDATE"
+
+    * user is on the page "TracheostomyPage"
+    * user clicks element via javascript "Ordered"
+    * user clicks the button "Edit Tracheostomy"
+    * user is on the page "TracheostomyPage"
+    * user fills the field "Date of Tracheostomy" with value "05-05-2021"
+    * user fills the field "Size" with value "21"
+    * user fills the field "DME and Supply Company Name" with value "test Name"
+    * user fills the field "DME Contact Person" with value "test Contact Name"
+    * user fills the field "Supplies DME Contact Number" with value "433-44-3311"
+    * user selects in dropdown "Billing Clearance" the value "Yes"
+    * user selects the checkbox "Hospital Bed"
+    * user selects the checkbox "Oxygen Concentrator"
+    * user selects the checkbox "Oxygen Tank"
+    * user selects the checkbox "Trach Humidifier"
+    * user selects the checkbox "Trach Collar"
+    * user selects the checkbox "Corrugated Tubing"
+    * user selects the checkbox "Distilled Water"
+    * user selects the checkbox "Condensation Drain"
+    * user selects the checkbox "Trach Dressing Kits"
+    * user selects the checkbox "Drain Sponges"
+    * user selects the checkbox "Hydrogen Peroxide"
+    * user selects the checkbox "Normal Saline"
+    * user selects the checkbox "Suction Machine"
+    * user selects the checkbox "Inline Suction"
+    * user selects the checkbox "Suction Tip Kit"
+    * user clicks the button "UPDATE"
+
+
+    Examples:
+      | searchByName | firstName   | lastName        | middleName | gender | searchValue   | birthDate  | patientNumberName | patientNumber | patientNumberName2 | patientNumber2 | patientNumberName3   | patientNumber3 |
+      | 123          | random name | random lastname | A          | Male   | #{~firstName} | 03-10-1993 | MBI Number        | 0015          | Medicaid Number    | 0016           | Kaiser Policy Number | 0017           |
+
+  @FirstPatientNewIntakeNoteAndFaceToFace
+  Scenario Outline: FirstPatientNewSpecialOrders
+    * user performs "createPatient" scenario
+    * user performs "goToHomePage" scenario
+      | searchByName   | firstName   | lastName   | middleName   | gender   | birthDate   | patientNumberName   | patientNumber   | patientNumberName2   | patientNumber2   | patientNumberName3   | patientNumber3   |
+      | <searchByName> | <firstName> | <lastName> | <middleName> | <gender> | <birthDate> | <patientNumberName> | <patientNumber> | <patientNumberName2> | <patientNumber2> | <patientNumberName3> | <patientNumber3> |
+    * ? user clicks the button "Administration"
+    * user clicks element via javascript "Administration"
+    * user is on the page "AdministrationPage"
+    * ? user clicks the button "Clinical Support"
+    * user clicks element via javascript "Clinical Support"
+    * user is on the page "ClinicalSupportPage"
+    * ? user clicks the button "Admission"
+    * user clicks element via javascript "Admission"
+    * user is on the page "AdmissionPage"
+    * ? user clicks the button "In Processing"
+    * user clicks element via javascript "In Processing"
+    * user is on the page "AdmissionPage"
+    * ? user clicks the button "search button"
+    * user clicks element via javascript "search button"
+    * user checks that text "Loading More Admissions" is absent on the page
+    * user fills the field "search bar" with value "<searchValue>"
+    * user is on the page "AdmissionPage"
+
+    * user clicks the button "first patient"
+    * user is on the page "PatientServiceDataPage"
+
+    * user clicks the button "Expand Intake Notes"
+    * user clicks the button "Edit Intake Info"
+    * user is on the page "IntakeInfoPage"
+    * user fills the field "Intake Notes" with value "Test Intake Note"
+    * user fills the field "Miscellaneous" with value "Test Miscellaneous"
+    * user clicks the button "UPDATE"
     * breakpoint
     #todo
 
     Examples:
       | searchByName | firstName   | lastName        | middleName | gender | searchValue   | birthDate  | patientNumberName | patientNumber | patientNumberName2 | patientNumber2 | patientNumberName3   | patientNumber3 |
       | 123          | random name | random lastname | A          | Male   | #{~firstName} | 03-10-1993 | MBI Number        | 0015          | Medicaid Number    | 0016           | Kaiser Policy Number | 0017           |
-

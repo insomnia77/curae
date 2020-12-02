@@ -29,6 +29,35 @@ public class AdmissionRequirementsPage extends HTMLPage {
     @FindBy(xpath = "//md-select[@name=\"homeHealthOrders\"]")
     private WebElement HomeHealthOrders;
 
+    @ElementTitle(value = "Skilled Nursing")
+    @FindBy(xpath = "//md-checkbox[@aria-label=\"Skilled Nursing\"]")
+    private WebElement SkilledNursing;
+
+    @ElementTitle(value = "Physical Therapy")
+    @FindBy(xpath = "//md-checkbox[@aria-label=\"Physical Therapy\"]\n")
+    private WebElement PhysicalTherapy;
+
+    @ElementTitle(value = "Occupational Therapy")
+    @FindBy(xpath = "//md-checkbox[@aria-label=\"Occupational Therapy\"]")
+    private WebElement OccupationalTherapy;
+
+    @ElementTitle(value = "Speech Therapy")
+    @FindBy(xpath = "//md-checkbox[@aria-label=\"Speech Therapy\"]")
+    private WebElement SpeechTherapy;
+
+    @ElementTitle(value = "Registered Dietician")
+    @FindBy(xpath = "//md-checkbox[@aria-label=\"Registered Dietician\"]")
+    private WebElement RegisteredDietician;
+
+    @ElementTitle(value = "Medical Social Services")
+    @FindBy(xpath = "//md-checkbox[@aria-label=\"Medical Social Services\"]")
+    private WebElement MedicalSocialServices;
+
+    @ElementTitle(value = "Certified Home Health Aide")
+    @FindBy(xpath = "//md-checkbox[@aria-label=\"Certified Home Health Aide\"]")
+    private WebElement CertifiedHomeHealthAide;
+
+
     @ElementTitle(value = "UPDATE")
     @FindBy(xpath = "//md-sidenav[not(contains(@class, 'md-closed'))]//button[(contains(@ng-click, 'admissionRequirementsForm'))]")
     private WebElement update;

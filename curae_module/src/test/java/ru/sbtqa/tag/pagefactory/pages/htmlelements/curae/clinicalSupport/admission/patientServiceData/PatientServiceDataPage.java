@@ -53,6 +53,14 @@ public class PatientServiceDataPage extends HTMLPage {
     @FindBy(xpath = "//*[@class='md-title' and contains(text(), 'Special Orders')]/parent::md-expansion-panel-collapsed/md-icon")
     private WebElement ExpandSpecialOrders;
 
+    @ElementTitle(value = "Expand Intake Notes")
+    @FindBy(xpath = "//*[@class='md-title' and contains(text(), 'Intake Notes')]/parent::md-expansion-panel-collapsed/md-icon")
+    private WebElement ExpandIntakeNotes;
+
+    @ElementTitle(value = "Edit Intake Info")
+    @FindBy(xpath = "//button[@ng-click=\"vm.openAdmissionSidebar('intakeinfo-sidenav')\"]")
+    private WebElement EditIntakeInfo;
+
     public PatientServiceDataPage() {
         long startTime = Now();
         Waits.waitForPageToLoad();
