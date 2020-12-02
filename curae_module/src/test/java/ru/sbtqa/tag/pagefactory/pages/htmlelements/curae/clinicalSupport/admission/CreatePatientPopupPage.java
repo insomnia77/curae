@@ -72,6 +72,10 @@ public class CreatePatientPopupPage extends HTMLPage {
     @FindBy(xpath = "//button[@ng-click=\"vm.addNewClick()\"]")
     private WebElement confirm;
 
+    @ElementTitle(value = "Message about existing")
+    @FindBy(xpath = "//div[@ng-if=\"::!dialog.mdHtmlContent\"]/p")
+    private WebElement messageExistingPatient;
+
     public CreatePatientPopupPage() {
         long startTime = Now();
         Waits.waitForPageToLoad();

@@ -28,6 +28,7 @@ public class LoginPage extends HTMLPage {
     public LoginPage() {
         long startTime = Now();
         Waits.waitForPageToLoad();
+        Waits.waitAndGetElements("//button/span[text()='Log in']",Waits.big_wait,Waits.pollingTime, true );
         Waits.addPageLoadTimeToAllure(startTime);
     }
 

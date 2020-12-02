@@ -30,5 +30,4 @@ public class ClinicalSupportPage extends HTMLPage {
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(admissionXpath)));
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath(admissionXpath)));
     }
-
 }
