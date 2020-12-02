@@ -551,8 +551,33 @@ Feature: admission
     * user clicks the button "Stool Appearance : Yellowish"
     * user clicks the button "UPDATE"
 
-    * breakpoint
-    #todo
+    * user is on the page "TracheostomyPage"
+    * user clicks element via javascript "Ordered"
+    * user clicks the button "Edit Tracheostomy"
+    * user is on the page "TracheostomyPage"
+    * user fills the field "Date of Tracheostomy" with value "05-05-2021"
+    * user fills the field "Size" with value "21"
+    * user fills the field "DME and Supply Company Name" with value "test Name"
+    * user fills the field "DME Contact Person" with value "test Contact Name"
+    * user fills the field "Supplies DME Contact Number" with value "433-44-3311"
+    * user selects in dropdown "Billing Clearance" the value "Yes"
+    * user selects the checkbox "Hospital Bed"
+    * user selects the checkbox "Oxygen Concentrator"
+    * user selects the checkbox "Oxygen Tank"
+    * user selects the checkbox "Trach Humidifier"
+    * user selects the checkbox "Trach Collar"
+    * user selects the checkbox "Corrugated Tubing"
+    * user selects the checkbox "Distilled Water"
+    * user selects the checkbox "Condensation Drain"
+    * user selects the checkbox "Trach Dressing Kits"
+    * user selects the checkbox "Drain Sponges"
+    * user selects the checkbox "Hydrogen Peroxide"
+    * user selects the checkbox "Normal Saline"
+    * user selects the checkbox "Suction Machine"
+    * user selects the checkbox "Inline Suction"
+    * user selects the checkbox "Suction Tip Kit"
+    * user clicks the button "UPDATE"
+
 
     Examples:
       | searchByName | firstName   | lastName        | middleName | gender | searchValue   | birthDate  | patientNumberName | patientNumber | patientNumberName2 | patientNumber2 | patientNumberName3   | patientNumber3 |
