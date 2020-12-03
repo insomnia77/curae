@@ -20,6 +20,34 @@ public class PatientBasicInfoPage extends HTMLPage {
     @FindBy(xpath = "//input[@ng-model=\"vm.patientInfo.height\"]")
     private WebElement height;
 
+    @ElementTitle(value = "Edit Patient Name")
+    @FindBy(xpath = "//button[@ng-click=\"vm.changekey()\"]")
+    private WebElement EditPatientName;
+
+    @ElementTitle(value = "First Name")
+    @FindBy(xpath = "//input[@ng-model=\"vm.editkey.firstName\"]")
+    private WebElement FirstName;
+
+    @ElementTitle(value = "Middle Name")
+    @FindBy(xpath = "//input[@ng-model=\"vm.editkey.middleName\"]")
+    private WebElement MiddleName;
+
+    @ElementTitle(value = "Last Name")
+    @FindBy(xpath = "//input[@name=\"lastName\"]")
+    private WebElement LastName;
+
+    @ElementTitle(value = "Gender")
+    @FindBy(xpath = "//md-select[@ng-model=\"vm.editkey.gender\"]")
+    private WebElement Gender;
+
+    @ElementTitle(value = "Update Patient Name")
+    @FindBy(xpath = "//button[@ng-click=\"vm.updatePatientKey(event)\"]")
+    private WebElement UpdatePatientName;
+
+    @ElementTitle(value = "Confirm!")
+    @FindBy(xpath = "//button[@ng-click=\"dialog.hide()\"]")
+    private WebElement Confirm;
+
     @ElementTitle(value = "UPDATE")
     @FindBy(xpath = "//*[@id=\"ui-admin-email\"]/md-content/md-sidenav[1]/md-content/button[2]")
     private WebElement update;
