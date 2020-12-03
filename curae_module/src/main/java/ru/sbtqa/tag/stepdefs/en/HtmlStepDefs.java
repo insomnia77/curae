@@ -67,6 +67,13 @@ public class HtmlStepDefs {
         js.executeScript("arguments[0].click();", element);
     }
 
+    @And("^user verifies that element \"([^\"]*)\" not clickable$")
+    public void verifiesThatElementNotClickable(String elementName) throws PageException {
+        PageContext.getCurrentPage();
+        WebElement element = ((HtmlFindUtils) Environment.getFindUtils()).find(elementName, false);
+        Assert.assertFalse(element.isEnabled());
+    }
+
     @And("^user trying to click element via javascript \"([^\"]*)\"$")
     public void tryJavaScriptClick(String elementName) throws PageException {
         try {

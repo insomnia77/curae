@@ -630,6 +630,8 @@ Feature: admission
     * user fills the field "PCP Appointment Date" with value "05-05-2021"
     * ? user clicks the button "UPDATE"
     * user clicks element via javascript "UPDATE"
+    * user is on the page "PatientServiceDataPage"
+    * user verifies that element "Submit" not clickable
 
 
     Examples:
