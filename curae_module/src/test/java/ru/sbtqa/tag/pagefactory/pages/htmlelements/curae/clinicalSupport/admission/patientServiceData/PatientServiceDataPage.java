@@ -61,6 +61,14 @@ public class PatientServiceDataPage extends HTMLPage {
     @FindBy(xpath = "//button[@ng-click=\"vm.openAdmissionSidebar('intakeinfo-sidenav')\"]")
     private WebElement EditIntakeInfo;
 
+    @ElementTitle(value = "Expand Face 2 Face Checklist")
+    @FindBy(xpath = "//*[@class='md-title' and contains(text(), 'Face 2 Face Checklist')]/parent::md-expansion-panel-collapsed/md-icon")
+    private WebElement ExpandFace2FaceChecklist;
+
+    @ElementTitle(value = "Edit Face 2 Face Checklist")
+    @FindBy(xpath = "//button[@ng-click=\"vm.openAdmissionSidebar('checklistinfo-sidenav')\"]")
+    private WebElement EditFace2FaceChecklist;
+
     public PatientServiceDataPage() {
         long startTime = Now();
         Waits.waitForPageToLoad();

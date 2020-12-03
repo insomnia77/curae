@@ -616,10 +616,25 @@ Feature: admission
     * user is on the page "IntakeInfoPage"
     * user fills the field "Intake Notes" with value "Test Intake Note"
     * user fills the field "Miscellaneous" with value "Test Miscellaneous"
-    * user clicks the button "UPDATE"
-    * breakpoint
-    #todo
+    * ? user clicks the button "UPDATE"
+    * user clicks element via javascript "UPDATE"
+    * user is on the page "PatientServiceDataPage"
+    * user clicks element via javascript "Expand Face 2 Face Checklist"
+    * ? user clicks the button "Edit Face 2 Face Checklist"
+    * user is on the page "Face2FaceChecklistPage"
+    * user selects in dropdown "Face 2 face sent to MD" the value "Faxed to MD Office"
+    * user is on the page "Face2FaceChecklistPage"
+    * user fills the field "Date Sent Md" with value "05-05-2021"
+    * user selects in dropdown "Face 2 Face Status on Admit Processing" the value "Missing"
+    * user selects in dropdown "Appointment Set with PCP" the value "Appointment set"
+    * user fills the field "PCP Appointment Date" with value "05-05-2021"
+    * ? user clicks the button "UPDATE"
+    * user clicks element via javascript "UPDATE"
+
 
     Examples:
       | searchByName | firstName   | lastName        | middleName | gender | searchValue   | birthDate  | patientNumberName | patientNumber | patientNumberName2 | patientNumber2 | patientNumberName3   | patientNumber3 |
       | 123          | random name | random lastname | A          | Male   | #{~firstName} | 03-10-1993 | MBI Number        | 0015          | Medicaid Number    | 0016           | Kaiser Policy Number | 0017           |
+
+
+    #TODO: submit functionality
