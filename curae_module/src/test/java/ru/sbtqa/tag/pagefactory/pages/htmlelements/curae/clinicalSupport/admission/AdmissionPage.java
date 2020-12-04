@@ -17,12 +17,13 @@ import static ru.sbtqa.tag.pagefactory.web.utils.Waits.Now;
 
 @PageEntry(title = "AdmissionPage")
 public class AdmissionPage extends HTMLPage {
+   private final String inProcessingXPATH = "(//*[@role='tablist']//*[text()='In Processing'])[1]";
 
     @ElementTitle(value = "navigationBlock")
     private NavigationBlock navigationBlock;
 
     @ElementTitle(value = "In Processing")
-    @FindBy(xpath = "(//*[@role='tablist']//*[text()='In Processing'])[1]")
+    @FindBy(xpath = inProcessingXPATH)
     private WebElement admission;
 
     @ElementTitle(value = "search button")
@@ -61,8 +62,8 @@ public class AdmissionPage extends HTMLPage {
         Waits.waitForPageToLoad();
         Waits.addPageLoadTimeToAllure(startTime);
         WebDriverWait wait = new WebDriverWait(Environment.getDriverService().getDriver(),30);
-    //    wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(clinicalSupportXpath)));
-    //    wait.until(ExpectedConditions.elementToBeClickable(By.xpath(clinicalSupportXpath)));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(inProcessingXPATH)));
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(inProcessingXPATH)));
     }
 
 }

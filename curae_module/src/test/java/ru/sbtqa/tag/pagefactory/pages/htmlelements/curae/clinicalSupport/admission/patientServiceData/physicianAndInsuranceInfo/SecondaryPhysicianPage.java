@@ -12,9 +12,10 @@ import static ru.sbtqa.tag.pagefactory.web.utils.Waits.Now;
 
 @PageEntry(title = "SecondaryPhysicianPage")
 public class SecondaryPhysicianPage extends HTMLPage{
+     private final String secondaryPhysicianXPATH = "//input[@aria-label=\"Secondary Physician\"]";
 
     @ElementTitle(value = "Secondary Physician")
-    @FindBy(xpath = "//input[@aria-label=\"Secondary Physician\"]")
+    @FindBy(xpath = secondaryPhysicianXPATH)
     private WebElement secondaryPhysician;
 
     @ElementTitle(value = "Successfully Verified")
@@ -30,8 +31,8 @@ public class SecondaryPhysicianPage extends HTMLPage{
         Waits.waitForPageToLoad();
         Waits.addPageLoadTimeToAllure(startTime);
         WebDriverWait wait = new WebDriverWait(Environment.getDriverService().getDriver(),30);
-    //    wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(clinicalSupportXpath)));
-    //    wait.until(ExpectedConditions.elementToBeClickable(By.xpath(clinicalSupportXpath)));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(secondaryPhysicianXPATH)));
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(secondaryPhysicianXPATH)));
     }
 
 }
