@@ -5,7 +5,7 @@ You can find cucumber feature with automation test here:
 
 To run autotest use:
 
-mvn -am -pl curae_module clean test -Dcucumber.options=" --plugin io.qameta.allure.cucumber2jvm.AllureCucumber2Jvm --plugin pretty --tags @createAccount"
+mvn -am -pl curae_module clean test -Dcucumber.options=" --plugin io.qameta.allure.cucumber4jvm.AllureCucumber4Jvm --plugin pretty --tags @createAccount"
 or
 use Idea to run
 
