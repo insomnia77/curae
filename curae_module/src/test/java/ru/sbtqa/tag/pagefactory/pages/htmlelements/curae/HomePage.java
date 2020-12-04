@@ -29,6 +29,7 @@ public class HomePage extends HTMLPage {
         long startTime = Now();
         Waits.waitForPageToLoad();
         Waits.waitNotElementsLite("//md-progress-circular[@role='progressbar']", Waits.big_wait, Waits.MinPollingTime, 1);
+        Waits.waitAndGetElements("//button[@ng-click=\"vm.go(entry.state)\" and @aria-label=\"Administration\"]",Waits.big_wait,Waits.pollingTime,true);
         Waits.addPageLoadTimeToAllure(startTime);
     }
 

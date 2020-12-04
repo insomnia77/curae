@@ -1,8 +1,8 @@
 package ru.sbtqa.tag.pagefactory.pages.htmlelements.curae.clinicalSupport.admission.patientServiceData.physicianAndInsuranceInfo;
 
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.*;
 import ru.sbtqa.tag.pagefactory.HTMLPage;
 import ru.sbtqa.tag.pagefactory.annotations.ActionTitle;
 import ru.sbtqa.tag.pagefactory.annotations.ElementTitle;
@@ -16,6 +16,7 @@ import static ru.sbtqa.tag.pagefactory.web.utils.Waits.Now;
 
 @PageEntry(title = "PreAuthInfoPage")
 public class PreAuthInfoPage extends HTMLPage {
+    private final String preAuthInfoXpath = "//md-sidenav[contains(@class,\"preauth-sidebar\")]";
 
     @ElementTitle(value = "Add Pre-Auth")
     @FindBy(xpath = "//button[@ng-click=\"vm.addPreAuthDialog()\"]")
@@ -29,6 +30,9 @@ public class PreAuthInfoPage extends HTMLPage {
         long startTime = Now();
         Waits.waitForPageToLoad();
         Waits.addPageLoadTimeToAllure(startTime);
+        WebDriverWait wait = new WebDriverWait(Environment.getDriverService().getDriver(),30);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(preAuthInfoXpath)));
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(preAuthInfoXpath)));
     }
 
     @ActionTitle("delete all disciplines")

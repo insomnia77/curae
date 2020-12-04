@@ -86,12 +86,12 @@ public class WebStepDefs {
         webSteps.checkElementWithTextIsPresent(text);
     }
 
-    @Когда("^user stores the value of the field \"([^\"]*)\" in the variable \"([^\"]*)\"$")
+    @When("^user stores the value of the field \"([^\"]*)\" in the variable \"([^\"]*)\"$")
     public void putElementValueInStash(String elementName, String variableName) throws PageException {
         webSteps.putElementValueInStash(elementName, variableName);
     }
 
-    @Когда("^user waits \"([^\"]*)\" seconds$")
+    @When("^user waits \"([^\"]*)\" seconds$")
     public void waiting(String sec) {
         if (sec != "0") {
             try {
@@ -102,31 +102,37 @@ public class WebStepDefs {
         }
     }
 
-    @Когда("^user executes \"([^\"]*)\" script$")
+    @When("^user executes \"([^\"]*)\" script$")
     public void executeScript(String script) {
         JavascriptExecutor jsExec = Environment.getDriverService().getDriver();
         jsExec.executeScript(script);
     }
 
-    @Когда("^user scrolls to element \"([^\"]*)\"$")
+    @When("^user scrolls to element \"([^\"]*)\"$")
     public void userScrollsToElement(String elementName) throws PageException {
         WebElement element = Environment.getFindUtils().getElementByTitle(PageContext.getCurrentPage(), elementName);
         JavascriptExecutor js = (JavascriptExecutor) Environment.getDriverService().getDriver();
         js.executeScript("arguments[0].scrollIntoView();", element);
     }
 
-    @Когда("^user scrolls page down$")
+    @When("^user scrolls page down$")
     public void scrollDown() {
         JavascriptExecutor js = Environment.getDriverService().getDriver();
         js.executeScript("window.scrollTo(0, document.body.scrollHeight)");
     }
 
-    @Когда("^breakpoint$")
+    @When("^user scrolls page up$")
+    public void scrollUp(){
+        JavascriptExecutor js = Environment.getDriverService().getDriver();
+        js.executeScript("window.scrollTo(0, -document.body.scrollHeight)");
+    }
+
+    @When("^breakpoint$")
     public void breakp() {
         try {
             Thread.sleep(1000);
         } catch (InterruptedException interrupt) {
-            System.out.println("проблема со sleep потока" + interrupt);
+            System.out.println("problem with sleep flow" + interrupt);
         }
     }
 }

@@ -1,10 +1,12 @@
 package ru.sbtqa.tag.pagefactory.pages.htmlelements.curae.clinicalSupport.admission;
 
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.*;
 import ru.sbtqa.tag.pagefactory.HTMLPage;
 import ru.sbtqa.tag.pagefactory.annotations.ElementTitle;
 import ru.sbtqa.tag.pagefactory.annotations.PageEntry;
+import ru.sbtqa.tag.pagefactory.environment.*;
 import ru.sbtqa.tag.pagefactory.pages.htmlelements.curae.blocks.NavigationBlock;
 import ru.sbtqa.tag.pagefactory.web.utils.Waits;
 
@@ -44,6 +46,9 @@ public class AdmissionPage extends HTMLPage {
         long startTime = Now();
         Waits.waitForPageToLoad();
         Waits.addPageLoadTimeToAllure(startTime);
+        WebDriverWait wait = new WebDriverWait(Environment.getDriverService().getDriver(),30);
+    //    wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(clinicalSupportXpath)));
+    //    wait.until(ExpectedConditions.elementToBeClickable(By.xpath(clinicalSupportXpath)));
     }
 
 }
