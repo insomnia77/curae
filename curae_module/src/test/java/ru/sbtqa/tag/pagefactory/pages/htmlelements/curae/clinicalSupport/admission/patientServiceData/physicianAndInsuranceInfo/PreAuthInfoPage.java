@@ -18,6 +18,10 @@ import static ru.sbtqa.tag.pagefactory.web.utils.Waits.Now;
 public class PreAuthInfoPage extends HTMLPage {
     private final String preAuthInfoXpath = "//md-sidenav[contains(@class,\"preauth-sidebar\")]";
 
+    @ElementTitle(value = "pageBody")
+    @FindBy(xpath = "//body")
+    private WebElement pageBody;
+
     @ElementTitle(value = "Add Pre-Auth")
     @FindBy(xpath = "//button[@ng-click=\"vm.addPreAuthDialog()\"]")
     private WebElement addPreAuth;

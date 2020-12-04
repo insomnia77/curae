@@ -75,6 +75,10 @@ public class PatientServiceDataPage extends HTMLPage {
     @FindBy(xpath = "//button[@ng-click=\"vm.openAdmissionSidebar('checklistinfo-sidenav')\"]")
     private WebElement EditFace2FaceChecklist;
 
+    @ElementTitle(value = "Save")
+    @FindBy(xpath = "(//button[@ng-click=\"vm.updateSpecialOrderAdmission('update')\" and @aria-label=\"Save\"])[2]")
+    private WebElement Save;
+
     @ElementTitle(value = "Submit")
     @FindBy(xpath = "//button[contains(text(),\"Submit\")]")
     private WebElement Submit;

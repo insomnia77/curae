@@ -78,7 +78,8 @@ Feature: admission
     * user is on the page "PatientBasicInfoPage"
     * user fills the field "Weight" with value "70"
     * user fills the field "Height" with value "175"
-    * user clicks the button "UPDATE"
+    * ? user clicks the button "UPDATE"
+    * user clicks element via javascript "UPDATE"
     * user is on the page "PatientInfoPage"
     * ? user clicks the button "Edit Primary Caregiver Info"
     * user clicks element via javascript "Edit Primary Caregiver Info"
@@ -184,8 +185,57 @@ Feature: admission
     * user fills the field "Approved:" with value "$PatientServicePreAuthInfoNewAuth{Approved:}"
     * user clicks the button "ADD"
     * user is on the page "PreAuthInfoPage"
-    * user clicks the button "UPDATE"
+    * user scrolls to element "UPDATE"
+    * user is on the page "PreAuthInfoPage"
+    * ? user clicks the button "UPDATE"
+    * user clicks element via javascript "UPDATE"
+    * user checks that text "Discipline" is absent on the page
 
+    * user is on the page "PatientServiceDataPage"
+    * ? user clicks the button "Approval Info"
+    * user clicks element via javascript "Expand Approval Info"
+    * user clicks element via javascript "Edit Approval Info"
+    * user is on the page "ApprovalInfoPage"
+
+    * user clears field "Date"
+    * user fills the field via javascript "Date" with value "03-10-2017"
+    * user is on the page "ApprovalInfoPage"
+    * user selects in dropdown "Transfer Status Assigned" the value "Kaiser Transfer"
+    * user selects in dropdown "Admission Category" the value "Relationship Admit"
+    * user selects in dropdown "Patient Discharge Status" the value "Patient is at Home"
+    * user (unselect all special programs)
+    * user clicks the button "pageBody"
+    * user performs "selectAllSpecialPrograms" scenario
+    * user is on the page "ApprovalInfoPage"
+    * user selects in dropdown "Admission Source" the value "Community"
+    * user selects in dropdown "Emergency Triage Code" the value "Emergent"
+    * ? user clicks the button "UPDATE"
+    * user clicks element via javascript "UPDATE"
+
+    * user is on the page "PatientServiceDataPage"
+    * user clicks the button "Expand Special Orders"
+
+    * user is on the page "LabDrawPage"
+    * user clicks element via javascript "Not Ordered"
+    * user is on the page "DMEPage"
+    * user clicks element via javascript "Not Ordered"
+    * user is on the page "WoundCarePage"
+    * user clicks element via javascript "Not Ordered"
+    * user is on the page "UrinaryDevicePage"
+    * user clicks element via javascript "Not Ordered"
+    * user is on the page "IVInfusionPage"
+    * user clicks element via javascript "Not Ordered"
+    * user is on the page "EnteralFeedingPage"
+    * user clicks element via javascript "Not Ordered"
+    * user is on the page "OstomyPage"
+    * user clicks element via javascript "Not Ordered"
+    * user is on the page "TracheostomyPage"
+    * user clicks element via javascript "Not Ordered"
+    * user is on the page "PatientServiceDataPage"
+    * user clicks element via javascript "Save"
+    * user is on the page "PatientServiceDataPage"
+    * user clicks the button "Submit"
+* breakpoint
 
     Examples:
       | searchByName | firstName   | lastName        | middleName | gender | searchValue   | birthDate  | patientNumberName | patientNumber | patientNumberName2 | patientNumber2 | patientNumberName3   | patientNumber3 |
