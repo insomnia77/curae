@@ -33,6 +33,8 @@ Feature: admission
     * user checks that text "Loading More Admissions" is absent on the page
     * user fills the field "search bar" with value "<searchValue>"
     * user is on the page "AdmissionPage"
+    * user checks that text "Loading More Admissions" is absent on the page
+    * user (waits that patients list smaller than 3)
     * user clicks the button "patient info"
     * user is on the page "PatientInfoPage"
     * user selects the checkbox "Same As Contact Address"
@@ -110,7 +112,8 @@ Feature: admission
     * user checks that text "Loading More Admissions" is absent on the page
     * user fills the field "search bar" with value "<searchValue>"
     * user is on the page "AdmissionPage"
-
+    * user checks that text "Loading More Admissions" is absent on the page
+    * user (waits that patients list smaller than 3)
     * user clicks the button "first patient"
     * user is on the page "PatientServiceDataPage"
     * user clicks the button "Edit Agency"
@@ -189,7 +192,7 @@ Feature: admission
     #todo Use a previous created Patient
     * user fills the field "search bar" with value "053b21c9af2e4b6 Snowman"
     * user is on the page "AdmissionPage"
-
+    * user checks that text "Loading More Admissions" is absent on the page
     * user clicks the button "first patient"
     * user is on the page "PatientServiceDataPage"
 
@@ -288,7 +291,8 @@ Feature: admission
     * user checks that text "Loading More Admissions" is absent on the page
     * user fills the field "search bar" with value "<searchValue>"
     * user is on the page "AdmissionPage"
-
+    * user checks that text "Loading More Admissions" is absent on the page
+    * user (waits that patients list smaller than 3)
     * user clicks the button "first patient"
     * user is on the page "PatientServiceDataPage"
     * user clicks the button "Edit Agency"
@@ -348,7 +352,8 @@ Feature: admission
     * user checks that text "Loading More Admissions" is absent on the page
     * user fills the field "search bar" with value "<searchValue>"
     * user is on the page "AdmissionPage"
-
+    * user checks that text "Loading More Admissions" is absent on the page
+    * user (waits that patients list smaller than 3)
     * user clicks the button "first patient"
     * user is on the page "PatientServiceDataPage"
 
@@ -414,7 +419,8 @@ Feature: admission
     * user checks that text "Loading More Admissions" is absent on the page
     * user fills the field "search bar" with value "<searchValue>"
     * user is on the page "AdmissionPage"
-
+    * user checks that text "Loading More Admissions" is absent on the page
+    * user (waits that patients list smaller than 3)
     * user clicks the button "first patient"
     * user is on the page "PatientServiceDataPage"
     * user clicks the button "Expand Special Orders"
@@ -607,7 +613,8 @@ Feature: admission
     * user checks that text "Loading More Admissions" is absent on the page
     * user fills the field "search bar" with value "<searchValue>"
     * user is on the page "AdmissionPage"
-
+    * user checks that text "Loading More Admissions" is absent on the page
+    * user (waits that patients list smaller than 3)
     * user clicks the button "first patient"
     * user is on the page "PatientServiceDataPage"
 
