@@ -55,6 +55,7 @@ Feature: admission
     * user clicks the button "UPDATE"
 
     * user is on the page "PatientInfoPage"
+      #todo:
     # problem with finding element after updating previous window. Add a row above
     #* user checks that element with text "Same As Contact Address" is present
    # * user selects the checkbox "Same As Contact Address"
@@ -66,8 +67,6 @@ Feature: admission
     * user is on the page "PatientBasicInfoPage"
     * user clicks element via javascript "Edit Patient Name"
     * user is on the page "PatientBasicInfoPage"
-   #######
-
     * user fills the field "First Name" with value "Editedname"
     * user fills the field "Middle Name" with value "Z"
     * user selects in dropdown "Gender" the value "Female"

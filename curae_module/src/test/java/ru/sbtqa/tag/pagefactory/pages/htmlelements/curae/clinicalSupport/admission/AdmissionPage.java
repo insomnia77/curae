@@ -4,11 +4,14 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.*;
 import ru.sbtqa.tag.pagefactory.HTMLPage;
+import ru.sbtqa.tag.pagefactory.annotations.ActionTitle;
 import ru.sbtqa.tag.pagefactory.annotations.ElementTitle;
 import ru.sbtqa.tag.pagefactory.annotations.PageEntry;
 import ru.sbtqa.tag.pagefactory.environment.*;
 import ru.sbtqa.tag.pagefactory.pages.htmlelements.curae.blocks.NavigationBlock;
 import ru.sbtqa.tag.pagefactory.web.utils.Waits;
+
+import java.util.List;
 
 import static ru.sbtqa.tag.pagefactory.web.utils.Waits.Now;
 
@@ -41,6 +44,17 @@ public class AdmissionPage extends HTMLPage {
     @ElementTitle(value = "first patient")
     @FindBy(xpath = "//button[@ng-click=\"vm.openPatient(admissionKey)\"]")
     private WebElement firstPatient;
+
+    @ActionTitle("waits that patients list smaller than 3")
+    public void searchPatient() {
+        int timeoutCount = 0;
+        Waits.waitForPageToLoad();
+        List<WebElement> elements = Waits.waitAndGetElements("//*[@infinite-scroll='vm.reddit.nextPage()']//md-list/md-list-item", Waits.big_wait, Waits.pollingTime);
+        if (!(timeoutCount < 6 && elements.size() > 0 && elements.size() < 4)) {
+            timeoutCount++;
+            searchPatient();
+        }
+    }
 
     public AdmissionPage() {
         long startTime = Now();
