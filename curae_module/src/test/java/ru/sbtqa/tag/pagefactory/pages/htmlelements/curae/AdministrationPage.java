@@ -31,5 +31,4 @@ public class AdministrationPage extends HTMLPage {
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(clinicalSupportXpath)));
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath(clinicalSupportXpath)));
     }
-
 }

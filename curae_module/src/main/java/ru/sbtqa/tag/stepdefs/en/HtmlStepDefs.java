@@ -117,14 +117,14 @@ public class HtmlStepDefs {
     @When("^user fills the field via javascript \"([^\"]*)\"(?: with value)?$")
     @And("^user fills the field via javascript \"([^\"]*)\" (?:with value )?\"([^\"]*)\"$")
     public void setValueJavascript(String elementTitle, String value) throws Exception {
-        if (!value.equals("~не заполняется")) {
+        if (!value.equals("~is not filling out")) {
             Converter converter = new Converter();
             WebElement webElement = ((HtmlFindUtils) Environment.getFindUtils()).find(elementTitle);
             try {
                 Waits.wait.until(ExpectedConditions.elementToBeClickable(webElement));
                 webElement.click();
             } catch (Exception e) {
-                System.out.println("Во время заполнения не удалось сделать клик на элемент с названием " + elementTitle);
+                System.out.println("During filling out couldn't click on element with name " + elementTitle);
             }
             JavascriptExecutor executor = Environment.getDriverService().getDriver();
             executor.executeScript("arguments[0].value='" + converter.transform(value) + "'", webElement);
@@ -137,7 +137,7 @@ public class HtmlStepDefs {
     @When("^user fills the telephone only javascript \"([^\"]*)\"(?: with value)?$")
     @And("^user fills the telephone only javascript \"([^\"]*)\" (?:with value )?\"([^\"]*)\"$")
     public void setValueFullJavascript(String elementTitle, String value) throws PageException {
-        if (!value.equals("~не заполняется")) {
+        if (!value.equals("~is not filling out")) {
             Converter converter = new Converter();
             WebDriver webDriver = Environment.getDriverService().getDriver();
             WebElement webElement = ((HtmlFindUtils) Environment.getFindUtils()).find(elementTitle);
@@ -165,7 +165,7 @@ public class HtmlStepDefs {
         WebElement webElement = ((HtmlFindUtils) Environment.getFindUtils()).find(elementTitle);
         Waits.wait.until(ExpectedConditions.visibilityOf(webElement));
         String value = getWebElementValue(webElement);
-        System.out.println("текущее значение в элементе = " + value);
+        System.out.println("current value of element = " + value);
         Assert.assertEquals(value.replaceAll("[^0-9-]", ""), text.replaceAll("[^0-9-]", ""));
     }
 

@@ -6,6 +6,7 @@ import ru.sbtqa.tag.pagefactory.HTMLPage;
 import ru.sbtqa.tag.pagefactory.annotations.ElementTitle;
 import ru.sbtqa.tag.pagefactory.annotations.PageEntry;
 import ru.sbtqa.tag.pagefactory.web.utils.Waits;
+import ru.sbtqa.tag.stepdefs.en.*;
 
 import static ru.sbtqa.tag.pagefactory.web.utils.Waits.Now;
 

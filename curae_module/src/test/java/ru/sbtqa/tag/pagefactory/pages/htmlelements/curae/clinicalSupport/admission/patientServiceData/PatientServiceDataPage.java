@@ -1,17 +1,19 @@
 package ru.sbtqa.tag.pagefactory.pages.htmlelements.curae.clinicalSupport.admission.patientServiceData;
 
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.*;
 import ru.sbtqa.tag.pagefactory.HTMLPage;
 import ru.sbtqa.tag.pagefactory.annotations.ElementTitle;
 import ru.sbtqa.tag.pagefactory.annotations.PageEntry;
+import ru.sbtqa.tag.pagefactory.environment.*;
 import ru.sbtqa.tag.pagefactory.web.utils.Waits;
 
 import static ru.sbtqa.tag.pagefactory.web.utils.Waits.Now;
 
 @PageEntry(title = "PatientServiceDataPage")
 public class PatientServiceDataPage extends HTMLPage {
-
+    private final String patientServiceDataXpath = "//md-card-content[contains(@ng-include, \"admissiondetail\")]";
 
     @ElementTitle(value = "Edit Agency")
     @FindBy(xpath = "//button[@ng-click=\"vm.openAdmissionSidebar('serviceArea-sidenav')\"]")
@@ -32,6 +34,10 @@ public class PatientServiceDataPage extends HTMLPage {
     @ElementTitle(value = "Edit Primary Physicians")
     @FindBy(xpath = "//button[@ng-click=\"vm.openAdmissionSidebar('primaryphysicianinfo-sidenav', $event)\"]")
     private WebElement editPrimaryPhysicians;
+
+    @ElementTitle(value = "Edit Secondary Physicians")
+    @FindBy(xpath = "//button[@ng-click=\"vm.openAdmissionSidebar('secondaryphysicianinfo-sidenav')\"]")
+    private WebElement editSecondaryPhysicians;
 
     @ElementTitle(value = "Edit Pre-Auth Info")
     @FindBy(xpath = "//button[@ng-click=\"vm.openAdmissionSidebar('preauthinfo-sidenav')\"]")
@@ -77,6 +83,9 @@ public class PatientServiceDataPage extends HTMLPage {
         long startTime = Now();
         Waits.waitForPageToLoad();
         Waits.addPageLoadTimeToAllure(startTime);
+        WebDriverWait wait = new WebDriverWait(Environment.getDriverService().getDriver(),30);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(patientServiceDataXpath)));
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(patientServiceDataXpath)));
     }
 
 }

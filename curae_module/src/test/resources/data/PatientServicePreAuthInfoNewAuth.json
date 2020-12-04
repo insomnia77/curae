@@ -1,4 +1,10 @@
 {
-  "Discipline": "PT",
+  "DisciplinePT": "PT",
+  "DisciplineRN": "RN",
+  "DisciplineOT": "OT",
+  "DisciplineST": "ST",
+  "DisciplineMSW": "MSW",
+  "DisciplineCHHA": "CHHA",
+  "DisciplineRD": "RD",
   "Approved:": "1"
 }

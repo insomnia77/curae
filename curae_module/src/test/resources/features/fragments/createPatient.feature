@@ -46,6 +46,7 @@ Feature: createPatient
     * user clicks the button "CONFIRM"
 
 @fragment
+  # for Existing User test
   Scenario: createPatient2
     * user is on the page "HomePage"
     * user clicks the button "Administration"

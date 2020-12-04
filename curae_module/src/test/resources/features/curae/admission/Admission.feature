@@ -139,15 +139,15 @@ Feature: admission
     * user refreshes the page
     * user is on the page "PatientServiceDataPage"
 
-#    * ? user clicks the button "Expand Physician and Insurance Info"
-#    * user clicks element via javascript "Expand Physician and Insurance Info"
-#    * user clicks element via javascript "Edit Primary Physicians"
-#    * user is on the page "PrimaryPhysicianPage"
-#     #TODO: test fails here - block disappearing after clicking ENTEr
-#    * user fill in autocomplete "Primary Physician" the value "$PatientServicePrimaryPhysician{Primary Physician search}" and select option "$PatientServicePrimaryPhysician{Primary Physician select}"
-#    * user selects in dropdown "Successfully Verified" the value "$PatientServicePrimaryPhysician{Successfully Verified}"
-#    * user clicks the button "UPDATE"
-#    #todo: difference with Excel, there are no Second Physician in the app
+    * ? user clicks the button "Expand Physician and Insurance Info"
+    * user clicks element via javascript "Expand Physician and Insurance Info"
+    * user clicks element via javascript "Edit Primary Physicians"
+    * user is on the page "PrimaryPhysicianPage"
+     #TODO: test fails here - block disappearing after clicking ENTEr
+    * user fill in autocomplete "Primary Physician" the value "$PatientServicePrimaryPhysician{Primary Physician search}" and select option "$PatientServicePrimaryPhysician{Primary Physician select}"
+    * user selects in dropdown "Successfully Verified" the value "$PatientServicePrimaryPhysician{Successfully Verified}"
+    * user clicks the button "UPDATE"
+    #todo: difference with Excel, there are no Second Physician in the app
 
 
     * user clicks the button "Expand Physician and Insurance Info"
