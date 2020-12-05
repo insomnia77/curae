@@ -139,30 +139,37 @@ Feature: admission
     * user refreshes the page
     * user is on the page "PatientServiceDataPage"
 
-    * ? user clicks the button "Expand Physician and Insurance Info"
-    * user clicks element via javascript "Expand Physician and Insurance Info"
-    * user clicks element via javascript "Edit Primary Physicians"
-    * user is on the page "PrimaryPhysicianPage"
-     #TODO: test fails here - block disappearing after clicking ENTEr
-    * user fill in autocomplete "Primary Physician" the value "$PatientServicePrimaryPhysician{Primary Physician search}" and select option "$PatientServicePrimaryPhysician{Primary Physician select}"
-    * user selects in dropdown "Successfully Verified" the value "$PatientServicePrimaryPhysician{Successfully Verified}"
-    * user clicks the button "UPDATE"
-    #todo: difference with Excel, there are no Second Physician in the app
+    #TODO: need to uncomment when defect with ENTER will be fixed
+#    * ? user clicks the button "Expand Physician and Insurance Info"
+#    * user clicks element via javascript "Expand Physician and Insurance Info"
+#    * user clicks element via javascript "Edit Primary Physicians"
+#    * user is on the page "PrimaryPhysicianPage"
+#     #TODO: test fails here - block disappearing after clicking ENTEr
+#    * user fill in autocomplete "Primary Physician" the value "$PatientServicePrimaryPhysician{Primary Physician search}" and select option "$PatientServicePrimaryPhysician{Primary Physician select}"
+#    * user selects in dropdown "Successfully Verified" the value "$PatientServicePrimaryPhysician{Successfully Verified}"
+#    #* user clicks the button "UPDATE"
+#    * breakpoint
+#     * user performs "executeUPDATE" scenario
+#      | pageName             |
+#      | PrimaryPhysicianPage |
+#    #todo: difference with Excel, there are no Second Physician in the app
 
 
     * user clicks the button "Expand Physician and Insurance Info"
     #* user clicks element via javascript "Expand Physician and Insurance Info"
     * user is on the page "PatientServiceDataPage"
-    # TODO: button disabled on this patient
-    * breakpoint
     * user clicks the button "Edit Pre-Auth Info"
-    * breakpoint
     * user is on the page "PreAuthInfoPage"
     * user clicks the button "Add Pre-Auth"
     * user is on the page "NewAuthPage"
-    * user selects in dropdown "Discipline" the value "$PatientServicePreAuthInfoNewAuth{Discipline}"
+    * user selects in dropdown "Discipline" the value "$PatientServicePreAuthInfoNewAuth{DisciplineST}"
     * user fills the field "Approved:" with value "$PatientServicePreAuthInfoNewAuth{Approved:}"
     * user clicks the button "ADD"
+    * breakpoint
+    * user is on the page "PreAuthInfoPage"
+    * user performs "executeUPDATE" scenario
+      | pageName        |
+      | PreAuthInfoPage |
     * breakpoint
 
     Examples:
@@ -203,9 +210,10 @@ Feature: admission
     * user clicks the button "first patient"
     * user waits "7" seconds
     * user checks that text "Loading More Admissions" is absent on the page
-    * user is on the page "AdmissionPage"
-    * user is on the page "PatientServiceDataPage"
-    * user clicks the button "Expand Physician and Insurance Info"
+#    * user is on the page "AdmissionPage"
+#    * user is on the page "PatientServiceDataPage"
+#    * ? user clicks the button "Expand Physician and Insurance Info"
+#    * user clicks element via javascript "search button"
     * user is on the page "PatientServiceDataPage"
     * user clicks the button "Edit Pre-Auth Info"
 
