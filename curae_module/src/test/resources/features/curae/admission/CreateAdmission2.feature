@@ -41,8 +41,10 @@ Feature: admission
     * user clicks element via javascript "Edit Contact Info"
     * user is on the page "PatientContactInfoPage"
     ## TODO: Address field is not filled out sometimes and made a problem
-    * user scrolls page up
+   # * user scrolls page up
+    * user scrolls to element "Address"
     * user fills the field "Address" with value "$PatientContactInfo{address}"
+    * breakpoint
     * user fills the field "City" with value "$PatientContactInfo{city}"
     * user fills the field "County" with value "$PatientContactInfo{county}"
     * user fills the field "State" with value "$PatientContactInfo{state}"
@@ -240,6 +242,7 @@ Feature: admission
     * user is on the page "PatientServiceDataPage"
     * user clicks the button "Submit"
 * breakpoint
+
 
     Examples:
       | searchByName | firstName   | lastName        | middleName | gender | searchValue   | birthDate  | patientNumberName | patientNumber | patientNumberName2 | patientNumber2 | patientNumberName3   | patientNumber3 |
