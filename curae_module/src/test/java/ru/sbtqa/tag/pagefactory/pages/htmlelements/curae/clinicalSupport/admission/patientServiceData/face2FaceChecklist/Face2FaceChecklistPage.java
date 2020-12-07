@@ -12,6 +12,10 @@ import static ru.sbtqa.tag.pagefactory.web.utils.Waits.Now;
 @PageEntry(title = "Face2FaceChecklistPage")
 public class Face2FaceChecklistPage extends HTMLPage {
 
+    @ElementTitle(value = "Edit Face 2 Face Checklist")
+    @FindBy(xpath = "//button[@ng-click=\"vm.openAdmissionSidebar('checklistinfo-sidenav')\"]")
+    private WebElement EditFace2FaceChecklist;
+
     @ElementTitle(value = "Face 2 face sent to MD")
     @FindBy(xpath = "//md-select[@ng-model=\"vm.checklist.faceToFaceSentToMD\"]")
     private WebElement Face2facesenttoMD;

@@ -178,7 +178,8 @@ public class HtmlStepDefs {
     }
 
     @And("^user selects in dropdown \"([^\"]*)\" the value \"([^\"]*)\"$")
-    public void select(String elementTitle, String option) throws PageException { WebElement element = ((HtmlFindUtils) Environment.getFindUtils()).find(elementTitle, true);
+    public void select(String elementTitle, String option) throws PageException {
+        WebElement element = ((HtmlFindUtils) Environment.getFindUtils()).find(elementTitle, true);
         element.click();
         Waits.waitForPageToLoad();
         JavascriptExecutor js = Environment.getDriverService().getDriver();
@@ -196,8 +197,15 @@ public class HtmlStepDefs {
     @And("^user fill in autocomplete \"([^\"]*)\" the value \"([^\"]*)\" and select option \"([^\"]*)\"$")
     public void selectAutocomplete(String elementTitle, String value, String option) throws PageException {
         WebElement element = ((HtmlFindUtils) Environment.getFindUtils()).find(elementTitle, true);
-        element.clear();
-        element.click();
+        try {
+            element.clear();
+            element.click();
+        } catch (org.openqa.selenium.ElementClickInterceptedException e) {
+            element = ((HtmlFindUtils) Environment.getFindUtils()).find(elementTitle, true);
+            element.clear();
+            JavascriptExecutor js = Environment.getDriverService().getDriver();
+            js.executeScript("arguments[0].click();", element);
+        }
         element.sendKeys(value);
         element.sendKeys(Keys.ENTER);
         Waits.waitForPageToLoad();

@@ -26,7 +26,7 @@ public class ClinicalSupportPage extends HTMLPage {
         long startTime = Now();
         Waits.waitForPageToLoad();
         Waits.addPageLoadTimeToAllure(startTime);
-        WebDriverWait wait = new WebDriverWait(Environment.getDriverService().getDriver(),30);
+        WebDriverWait wait = new WebDriverWait(Environment.getDriverService().getDriver(),60);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(admissionXpath)));
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath(admissionXpath)));
     }

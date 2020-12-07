@@ -9,7 +9,7 @@ Feature: admission
     * user fills the field "Password" with value "password"
     * user clicks the button "Log in"
 
-
+ #1
   @FirstPatientNewAdmissionPatientInfo @data=$PatientContactInfo @data=$PatientBasicInfo
   Scenario Outline: FirstPatientNewAdmission
     * user performs "createPatient" scenario
@@ -89,6 +89,7 @@ Feature: admission
       #| 123          | test1     | Test lastname | A          | Male   | test7       | 03-10-1993 | MBI Number        | 0015          | Medicaid Number    | 0016           | Kaiser Policy Number | 0017           |
       | 123          | random name | random lastname | A          | Male   | #{~firstName} | 03-10-1993 | MBI Number        | 0015          | Medicaid Number    | 0016           | Kaiser Policy Number | 0017           |
 
+    #2
   @FirstPatientNewAdmissionServiceData @data=$PatientServiceData
   Scenario Outline: FirstPatientNewAdmissionServiceData
     * user performs "createPatient" scenario
@@ -102,7 +103,7 @@ Feature: admission
     * user clicks element via javascript "Clinical Support"
     * user is on the page "ClinicalSupportPage"
     * ? user clicks the button "Admission"
-    * user clicks element via javascript "Admission"
+    * ? user clicks element via javascript "Admission"
     * user is on the page "AdmissionPage"
     * ? user clicks the button "In Processing"
     * user clicks element via javascript "In Processing"
@@ -163,8 +164,10 @@ Feature: admission
     * user clicks the button "Add Pre-Auth"
     * user is on the page "NewAuthPage"
     * user selects in dropdown "Discipline" the value "$PatientServicePreAuthInfoNewAuth{DisciplineST}"
-    * user fills the field "Approved:" with value "$PatientServicePreAuthInfoNewAuth{Approved:}"
-    * user clicks the button "ADD"
+    * user is on the page "NewAuthPage"
+    * user fills the field via javascript "Approved:" with value "$PatientServicePreAuthInfoNewAuth{Approved:}"
+    * user is on the page "NewAuthPage"
+    * user clicks element via javascript "ADD"
     * breakpoint
     * user is on the page "PreAuthInfoPage"
     * user performs "executeUPDATE" scenario
@@ -177,6 +180,7 @@ Feature: admission
       #| 123          | test1     | Test lastname | A          | Male   | test7       | 03-10-1993 | MBI Number        | 0015          | Medicaid Number    | 0016           | Kaiser Policy Number | 0017           |
       | 123          | random name | random lastname | A          | Male   | #{~firstName} | 03-10-1993 | MBI Number        | 0015          | Medicaid Number    | 0016           | Kaiser Policy Number | 0017           |
 
+    #3
   #workaround, with huge static waits
   @PreAuthInfoWithOutCreatingNewPatient
   Scenario: PreAuthInfoWithOutCreatingNewPatient
@@ -275,7 +279,7 @@ Feature: admission
     * user clicks element via javascript "UPDATE"
     * breakpoint
 
-
+#4
   @FirstPatientNewAdmissionApprovalInfo @data=$PatientServiceData
   Scenario Outline: FirstPatientNewAdmissionApprovalInfo
     * user performs "createPatient" scenario
@@ -289,7 +293,7 @@ Feature: admission
     * user clicks element via javascript "Clinical Support"
     * user is on the page "ClinicalSupportPage"
     * ? user clicks the button "Admission"
-    * user clicks element via javascript "Admission"
+    * ? user clicks element via javascript "Admission"
     * user is on the page "AdmissionPage"
     * ? user clicks the button "In Processing"
     * user clicks element via javascript "In Processing"
@@ -337,6 +341,7 @@ Feature: admission
       | searchByName | firstName   | lastName        | middleName | gender | searchValue   | birthDate  | patientNumberName | patientNumber | patientNumberName2 | patientNumber2 | patientNumberName3   | patientNumber3 |
       | 123          | random name | random lastname | A          | Male   | #{~firstName} | 03-10-1993 | MBI Number        | 0015          | Medicaid Number    | 0016           | Kaiser Policy Number | 0017           |
 
+    #5
   @FirstPatientNewAdmissionRequirements
   Scenario Outline: FirstPatientNewAdmissionRequirements
     * user performs "createPatient" scenario
@@ -404,6 +409,7 @@ Feature: admission
       | searchByName | firstName   | lastName        | middleName | gender | searchValue   | birthDate  | patientNumberName | patientNumber | patientNumberName2 | patientNumber2 | patientNumberName3   | patientNumber3 |
       | 123          | random name | random lastname | A          | Male   | #{~firstName} | 03-10-1993 | MBI Number        | 0015          | Medicaid Number    | 0016           | Kaiser Policy Number | 0017           |
 
+    #6
   @FirstPatientNewSpecialOrders
   Scenario Outline: FirstPatientNewSpecialOrders
     * user performs "createPatient" scenario
@@ -598,6 +604,7 @@ Feature: admission
       | searchByName | firstName   | lastName        | middleName | gender | searchValue   | birthDate  | patientNumberName | patientNumber | patientNumberName2 | patientNumber2 | patientNumberName3   | patientNumber3 |
       | 123          | random name | random lastname | A          | Male   | #{~firstName} | 03-10-1993 | MBI Number        | 0015          | Medicaid Number    | 0016           | Kaiser Policy Number | 0017           |
 
+    #7
   @FirstPatientNewIntakeNoteAndFaceToFace
   Scenario Outline: FirstPatientNewSpecialOrders
     * user performs "createPatient" scenario
@@ -635,9 +642,11 @@ Feature: admission
     * user clicks element via javascript "UPDATE"
     * user is on the page "PatientServiceDataPage"
     * user clicks element via javascript "Expand Face 2 Face Checklist"
-    * ? user clicks the button "Edit Face 2 Face Checklist"
+    * user is on the page "Face2FaceChecklistViewPage"
+    * user clicks the button "Edit Face 2 Face Checklist"
     * user is on the page "Face2FaceChecklistPage"
     * user selects in dropdown "Face 2 face sent to MD" the value "Faxed to MD Office"
+    * breakpoint
     * user is on the page "Face2FaceChecklistPage"
     * user fills the field "Date Sent Md" with value "05-05-2021"
     * user selects in dropdown "Face 2 Face Status on Admit Processing" the value "Missing"
