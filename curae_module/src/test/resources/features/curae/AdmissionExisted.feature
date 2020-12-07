@@ -21,7 +21,9 @@ Scenario Outline: ExistingPatientCreating
     | searchByName   | firstName   | lastName   | middleName   | gender   | birthDate   | patientNumberName   | patientNumber   | patientNumberName2   | patientNumber2   | patientNumberName3   | patientNumber3   |
     | <searchByName> | <firstName2> | <lastName2> | <middleName> | <gender> | <birthDate> | <patientNumberName> | <patientNumber> | <patientNumberName2> | <patientNumber2> | <patientNumberName3> | <patientNumber3> |
 
-  * user checks value in "Message about existing" contains "already exists"
+  * breakpoint
+  * ? user checks value in "Message about existing" contains "already exists"
+  * user checks value in "Message about existing" contains "Already has a user with the same email"
   * user performs "goToHomePage" scenario
 
   Examples:

@@ -18,6 +18,7 @@ import static ru.sbtqa.tag.pagefactory.web.utils.Waits.Now;
 @PageEntry(title = "AdmissionPage")
 public class AdmissionPage extends HTMLPage {
    private final String inProcessingXPATH = "(//*[@role='tablist']//*[text()='In Processing'])[1]";
+   private int timeoutCount = 0;
 
     @ElementTitle(value = "navigationBlock")
     private NavigationBlock navigationBlock;
@@ -48,7 +49,6 @@ public class AdmissionPage extends HTMLPage {
 
     @ActionTitle("waits that patients list smaller than 3")
     public void searchPatient() {
-        int timeoutCount = 0;
         Waits.waitForPageToLoad();
         List<WebElement> elements = Waits.waitAndGetElements("//*[@infinite-scroll='vm.reddit.nextPage()']//md-list/md-list-item", Waits.big_wait, Waits.pollingTime);
         if (!(timeoutCount < 6 && elements.size() > 0 && elements.size() < 4)) {
@@ -60,10 +60,10 @@ public class AdmissionPage extends HTMLPage {
     public AdmissionPage() {
         long startTime = Now();
         Waits.waitForPageToLoad();
-        Waits.addPageLoadTimeToAllure(startTime);
         WebDriverWait wait = new WebDriverWait(Environment.getDriverService().getDriver(),30);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(inProcessingXPATH)));
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath(inProcessingXPATH)));
+        Waits.addPageLoadTimeToAllure(startTime);
     }
 
 }
