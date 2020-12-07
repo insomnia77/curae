@@ -23,6 +23,7 @@ import ru.sbtqa.tag.pagefactory.web.utils.Waits;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static org.apache.commons.lang3.SystemUtils.IS_OS_MAC;
 import static ru.sbtqa.tag.pagefactory.web.utils.ElementUtils.getWebElementValue;
 
 public class HtmlStepDefs {
@@ -126,11 +127,15 @@ public class HtmlStepDefs {
             } catch (Exception e) {
                 System.out.println("During filling out couldn't click on element with name " + elementTitle);
             }
-            JavascriptExecutor executor = Environment.getDriverService().getDriver();
-            executor.executeScript("arguments[0].value='" + converter.transform(value) + "'", webElement);
-            Waits.wait.until(ExpectedConditions.elementToBeClickable(webElement));
-            webElement.sendKeys(Keys.chord(Keys.CONTROL, "a"));
-            webElement.sendKeys(converter.transform(value));
+            if(!IS_OS_MAC) {
+                JavascriptExecutor executor = Environment.getDriverService().getDriver();
+                executor.executeScript("arguments[0].value='" + converter.transform(value) + "'", webElement);
+                Waits.wait.until(ExpectedConditions.elementToBeClickable(webElement));
+                webElement.sendKeys(Keys.chord(Keys.CONTROL, "a"));
+            } else {
+                webElement.clear();
+                webElement.sendKeys(converter.transform(value));
+            }
         }
     }
 

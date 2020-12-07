@@ -134,6 +134,7 @@ Feature: admission
     * user fills the field "Insurance Authorization Code" with value "$PatientServiceInsuranceInfo{Insurance Authorization Code}"
     * user fill in autocomplete "Primary Insurance" the value "$PatientServiceInsuranceInfo{Primary Insurance search}" and select option "$PatientServiceInsuranceInfo{Primary Insurance select}"
     * user selects in dropdown "DDE Verification Printed and Filed" the value "$PatientServiceInsuranceInfo{DDE Verification Printed and Filed}"
+    * breakpoint
     * user clicks the button "UPDATE"
 
     * user is on the page "PatientServiceDataPage"

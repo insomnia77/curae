@@ -58,7 +58,7 @@ Feature: createPatient
     * user clicks element via javascript "Clinical Support"
     * user is on the page "ClinicalSupportPage"
     * ? user clicks the button "Admission"
-    * user clicks element via javascript "Admission"
+    * user trying to click element via javascript "Admission"
     * user is on the page "AdmissionPage"
     * ? user clicks the button "New Patient"
     * user clicks element via javascript "New Patient"
@@ -66,7 +66,7 @@ Feature: createPatient
     * user checks that text "New Admission" appears on the page
     * ? user fills the field "Search by patient name" with value "<searchByName>"
     * user fills the field via javascript "Search by patient name" with value "<searchByName>"
-    * user clicks the button "pageBody"
+    * ? user clicks the button "pageBody"
     * user is on the page "CreatePatientPopupPage"
     * user fills the field "Patient first name" with value "<firstName>"
     * user fills the field "Patient last name" with value "<lastName>"
