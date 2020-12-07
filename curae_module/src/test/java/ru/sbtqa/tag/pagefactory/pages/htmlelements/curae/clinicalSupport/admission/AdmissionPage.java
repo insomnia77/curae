@@ -60,10 +60,10 @@ public class AdmissionPage extends HTMLPage {
     public AdmissionPage() {
         long startTime = Now();
         Waits.waitForPageToLoad();
-        Waits.addPageLoadTimeToAllure(startTime);
         WebDriverWait wait = new WebDriverWait(Environment.getDriverService().getDriver(),30);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(inProcessingXPATH)));
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath(inProcessingXPATH)));
+        Waits.addPageLoadTimeToAllure(startTime);
     }
 
 }

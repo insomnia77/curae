@@ -201,6 +201,7 @@ public class HtmlStepDefs {
             element.clear();
             element.click();
         } catch (org.openqa.selenium.ElementClickInterceptedException e) {
+            System.out.println("problem with click to open autocomplete");
             element = ((HtmlFindUtils) Environment.getFindUtils()).find(elementTitle, true);
             element.clear();
             JavascriptExecutor js = Environment.getDriverService().getDriver();

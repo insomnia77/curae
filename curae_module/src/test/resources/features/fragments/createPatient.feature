@@ -18,10 +18,11 @@ Feature: createPatient
     * user checks that text "New Admission" appears on the page
     * ? user fills the field "Search by patient name" with value "<searchByName>"
     * user fills the field via javascript "Search by patient name" with value "<searchByName>"
-    * user clicks the button "pageBody"
+    * ? user clicks the button "pageBody"
     * user is on the page "CreatePatientPopupPage"
     * stores the value "<firstName>" in a variable "~firstName"
     * user fills the field "Patient first name" with value "#{~firstName}"
+    * user is on the page "CreatePatientPopupPage"
     * stores the value "<lastName>" in a variable "~lastName"
     * user fills the field "Patient last name" with value "#{~lastName}"
     * user fills the field "Patient middle name" with value "<middleName>"
@@ -45,11 +46,13 @@ Feature: createPatient
 
     * user clicks the button "CONFIRM"
 
-@fragment
+  @fragment
   # for Existing User test
   Scenario: createPatient2
     * user is on the page "HomePage"
-    * user clicks the button "Administration"
+    * ? user clicks the button "Administration"
+    * user is on the page "HomePage"
+    * user trying to click element via javascript "Administration"
     * user is on the page "AdministrationPage"
     * ? user clicks the button "Clinical Support"
     * user clicks element via javascript "Clinical Support"

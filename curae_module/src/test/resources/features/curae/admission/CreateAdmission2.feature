@@ -23,7 +23,7 @@ Feature: admission
     * user clicks element via javascript "Clinical Support"
     * user is on the page "ClinicalSupportPage"
     * ? user clicks the button "Admission"
-    * user clicks element via javascript "Admission"
+    * user trying to click element via javascript "Admission"
     * user is on the page "AdmissionPage"
     * ? user clicks the button "In Processing"
     * user clicks element via javascript "In Processing"
@@ -31,7 +31,7 @@ Feature: admission
     * ? user clicks the button "search button"
     * user clicks element via javascript "search button"
     * user checks that text "Loading More Admissions" is absent on the page
-    * user fills the field "search bar" with value "<searchValue>"
+    * user fills the field via javascript "search bar" with value "<searchValue>"
     * user is on the page "AdmissionPage"
     * user clicks the button "patient info"
     * user is on the page "PatientInfoPage"
@@ -77,7 +77,8 @@ Feature: admission
     * user clicks element via javascript "Edit Patient Name"
     * user is on the page "PatientBasicInfoPage"
     * user fills the field "Weight" with value "70"
-    * user fills the field "Height" with value "175"
+    * user is on the page "PatientBasicInfoPage"
+    * user fills the field via javascript "Height" with value "175"
     * ? user clicks the button "UPDATE"
     * user clicks element via javascript "UPDATE"
     * user is on the page "PatientInfoPage"
@@ -94,6 +95,8 @@ Feature: admission
     * user clicks the button "UPDATE"
 
     * user is on the page "AdmissionPage"
+    * user checks that text "Loading More Admissions" is absent on the page
+    * user (waits that patients list smaller than 3)
     * user clicks the button "first patient"
     * user is on the page "PatientServiceDataPage"
     * user clicks the button "Edit Agency"
@@ -144,6 +147,7 @@ Feature: admission
     * user clicks the button "ADD"
     * user is on the page "PreAuthInfoPage"
     * user clicks the button "Add Pre-Auth"
+    * breakpoint
     * user is on the page "NewAuthPage"
     * user selects in dropdown "Discipline" the value "$PatientServicePreAuthInfoNewAuth{DisciplineRN}"
     * user fills the field "Approved:" with value "$PatientServicePreAuthInfoNewAuth{Approved:}"
