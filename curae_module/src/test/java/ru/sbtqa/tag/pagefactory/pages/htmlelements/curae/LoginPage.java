@@ -31,7 +31,7 @@ public class LoginPage extends HTMLPage {
         Waits.waitForPageToLoad();
         Waits.waitAndGetElements("//button/span[text()='Log in']",Waits.big_wait,Waits.pollingTime, true );
         Waits.addPageLoadTimeToAllure(startTime);
-        System.out.println(Environment.getDriverService().getDriver().getPageSource());
+       // System.out.println(Environment.getDriverService().getDriver().getPageSource());
     }
 
 }
