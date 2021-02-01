@@ -6,6 +6,7 @@ import ru.sbtqa.tag.pagefactory.HTMLPage;
 import ru.sbtqa.tag.pagefactory.annotations.ActionTitle;
 import ru.sbtqa.tag.pagefactory.annotations.ElementTitle;
 import ru.sbtqa.tag.pagefactory.annotations.PageEntry;
+import ru.sbtqa.tag.pagefactory.environment.Environment;
 import ru.sbtqa.tag.pagefactory.web.utils.Waits;
 
 import static ru.sbtqa.tag.pagefactory.web.utils.Waits.Now;
@@ -30,6 +31,7 @@ public class LoginPage extends HTMLPage {
         Waits.waitForPageToLoad();
         Waits.waitAndGetElements("//button/span[text()='Log in']",Waits.big_wait,Waits.pollingTime, true );
         Waits.addPageLoadTimeToAllure(startTime);
+        System.out.println(Environment.getDriverService().getDriver().getPageSource());
     }
 
 }
