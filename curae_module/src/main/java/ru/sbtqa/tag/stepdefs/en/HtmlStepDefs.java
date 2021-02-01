@@ -23,6 +23,7 @@ import ru.sbtqa.tag.pagefactory.web.utils.Waits;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static org.apache.commons.lang3.SystemUtils.IS_OS_MAC;
 import static ru.sbtqa.tag.pagefactory.web.utils.ElementUtils.getWebElementValue;
 
 public class HtmlStepDefs {
@@ -126,11 +127,15 @@ public class HtmlStepDefs {
             } catch (Exception e) {
                 System.out.println("During filling out couldn't click on element with name " + elementTitle);
             }
-            JavascriptExecutor executor = Environment.getDriverService().getDriver();
-            executor.executeScript("arguments[0].value='" + converter.transform(value) + "'", webElement);
-            Waits.wait.until(ExpectedConditions.elementToBeClickable(webElement));
-            webElement.sendKeys(Keys.chord(Keys.CONTROL, "a"));
-            webElement.sendKeys(converter.transform(value));
+            if(!IS_OS_MAC) {
+                JavascriptExecutor executor = Environment.getDriverService().getDriver();
+                executor.executeScript("arguments[0].value='" + converter.transform(value) + "'", webElement);
+                Waits.wait.until(ExpectedConditions.elementToBeClickable(webElement));
+                webElement.sendKeys(Keys.chord(Keys.CONTROL, "a"));
+            } else {
+                webElement.clear();
+                webElement.sendKeys(converter.transform(value));
+            }
         }
     }
 
@@ -178,7 +183,8 @@ public class HtmlStepDefs {
     }
 
     @And("^user selects in dropdown \"([^\"]*)\" the value \"([^\"]*)\"$")
-    public void select(String elementTitle, String option) throws PageException { WebElement element = ((HtmlFindUtils) Environment.getFindUtils()).find(elementTitle, true);
+    public void select(String elementTitle, String option) throws PageException {
+        WebElement element = ((HtmlFindUtils) Environment.getFindUtils()).find(elementTitle, true);
         element.click();
         Waits.waitForPageToLoad();
         JavascriptExecutor js = Environment.getDriverService().getDriver();
@@ -196,8 +202,16 @@ public class HtmlStepDefs {
     @And("^user fill in autocomplete \"([^\"]*)\" the value \"([^\"]*)\" and select option \"([^\"]*)\"$")
     public void selectAutocomplete(String elementTitle, String value, String option) throws PageException {
         WebElement element = ((HtmlFindUtils) Environment.getFindUtils()).find(elementTitle, true);
-        element.clear();
-        element.click();
+        try {
+            element.clear();
+            element.click();
+        } catch (org.openqa.selenium.ElementClickInterceptedException e) {
+            System.out.println("problem with click to open autocomplete");
+            element = ((HtmlFindUtils) Environment.getFindUtils()).find(elementTitle, true);
+            element.clear();
+            JavascriptExecutor js = Environment.getDriverService().getDriver();
+            js.executeScript("arguments[0].click();", element);
+        }
         element.sendKeys(value);
         element.sendKeys(Keys.ENTER);
         Waits.waitForPageToLoad();

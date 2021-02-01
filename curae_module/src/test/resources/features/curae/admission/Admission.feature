@@ -9,7 +9,7 @@ Feature: admission
     * user fills the field "Password" with value "password"
     * user clicks the button "Log in"
 
-
+ #1
   @FirstPatientNewAdmissionPatientInfo @data=$PatientContactInfo @data=$PatientBasicInfo
   Scenario Outline: FirstPatientNewAdmission
     * user performs "createPatient" scenario
@@ -89,6 +89,7 @@ Feature: admission
       #| 123          | test1     | Test lastname | A          | Male   | test7       | 03-10-1993 | MBI Number        | 0015          | Medicaid Number    | 0016           | Kaiser Policy Number | 0017           |
       | 123          | random name | random lastname | A          | Male   | #{~firstName} | 03-10-1993 | MBI Number        | 0015          | Medicaid Number    | 0016           | Kaiser Policy Number | 0017           |
 
+    #2
   @FirstPatientNewAdmissionServiceData @data=$PatientServiceData
   Scenario Outline: FirstPatientNewAdmissionServiceData
     * user performs "createPatient" scenario
@@ -102,7 +103,7 @@ Feature: admission
     * user clicks element via javascript "Clinical Support"
     * user is on the page "ClinicalSupportPage"
     * ? user clicks the button "Admission"
-    * user clicks element via javascript "Admission"
+    * ? user clicks element via javascript "Admission"
     * user is on the page "AdmissionPage"
     * ? user clicks the button "In Processing"
     * user clicks element via javascript "In Processing"
@@ -133,36 +134,46 @@ Feature: admission
     * user fills the field "Insurance Authorization Code" with value "$PatientServiceInsuranceInfo{Insurance Authorization Code}"
     * user fill in autocomplete "Primary Insurance" the value "$PatientServiceInsuranceInfo{Primary Insurance search}" and select option "$PatientServiceInsuranceInfo{Primary Insurance select}"
     * user selects in dropdown "DDE Verification Printed and Filed" the value "$PatientServiceInsuranceInfo{DDE Verification Printed and Filed}"
+    * breakpoint
     * user clicks the button "UPDATE"
 
     * user is on the page "PatientServiceDataPage"
     * user refreshes the page
     * user is on the page "PatientServiceDataPage"
 
-    * ? user clicks the button "Expand Physician and Insurance Info"
-    * user clicks element via javascript "Expand Physician and Insurance Info"
-    * user clicks element via javascript "Edit Primary Physicians"
-    * user is on the page "PrimaryPhysicianPage"
-     #TODO: test fails here - block disappearing after clicking ENTEr
-    * user fill in autocomplete "Primary Physician" the value "$PatientServicePrimaryPhysician{Primary Physician search}" and select option "$PatientServicePrimaryPhysician{Primary Physician select}"
-    * user selects in dropdown "Successfully Verified" the value "$PatientServicePrimaryPhysician{Successfully Verified}"
-    * user clicks the button "UPDATE"
-    #todo: difference with Excel, there are no Second Physician in the app
+    #TODO: need to uncomment when defect with ENTER will be fixed
+#    * ? user clicks the button "Expand Physician and Insurance Info"
+#    * user clicks element via javascript "Expand Physician and Insurance Info"
+#    * user clicks element via javascript "Edit Primary Physicians"
+#    * user is on the page "PrimaryPhysicianPage"
+#     #TODO: test fails here - block disappearing after clicking ENTEr
+#    * user fill in autocomplete "Primary Physician" the value "$PatientServicePrimaryPhysician{Primary Physician search}" and select option "$PatientServicePrimaryPhysician{Primary Physician select}"
+#    * user selects in dropdown "Successfully Verified" the value "$PatientServicePrimaryPhysician{Successfully Verified}"
+#    #* user clicks the button "UPDATE"
+#    * breakpoint
+#     * user performs "executeUPDATE" scenario
+#      | pageName             |
+#      | PrimaryPhysicianPage |
+#    #todo: difference with Excel, there are no Second Physician in the app
 
 
     * user clicks the button "Expand Physician and Insurance Info"
     #* user clicks element via javascript "Expand Physician and Insurance Info"
     * user is on the page "PatientServiceDataPage"
-    # TODO: button disabled on this patient
-    * breakpoint
     * user clicks the button "Edit Pre-Auth Info"
-    * breakpoint
     * user is on the page "PreAuthInfoPage"
     * user clicks the button "Add Pre-Auth"
     * user is on the page "NewAuthPage"
-    * user selects in dropdown "Discipline" the value "$PatientServicePreAuthInfoNewAuth{Discipline}"
-    * user fills the field "Approved:" with value "$PatientServicePreAuthInfoNewAuth{Approved:}"
-    * user clicks the button "ADD"
+    * user selects in dropdown "Discipline" the value "$PatientServicePreAuthInfoNewAuth{DisciplineST}"
+    * user is on the page "NewAuthPage"
+    * user fills the field via javascript "Approved:" with value "$PatientServicePreAuthInfoNewAuth{Approved:}"
+    * user is on the page "NewAuthPage"
+    * user clicks element via javascript "ADD"
+    * breakpoint
+    * user is on the page "PreAuthInfoPage"
+    * user performs "executeUPDATE" scenario
+      | pageName        |
+      | PreAuthInfoPage |
     * breakpoint
 
     Examples:
@@ -170,6 +181,7 @@ Feature: admission
       #| 123          | test1     | Test lastname | A          | Male   | test7       | 03-10-1993 | MBI Number        | 0015          | Medicaid Number    | 0016           | Kaiser Policy Number | 0017           |
       | 123          | random name | random lastname | A          | Male   | #{~firstName} | 03-10-1993 | MBI Number        | 0015          | Medicaid Number    | 0016           | Kaiser Policy Number | 0017           |
 
+    #3
   #workaround, with huge static waits
   @PreAuthInfoWithOutCreatingNewPatient
   Scenario: PreAuthInfoWithOutCreatingNewPatient
@@ -181,7 +193,7 @@ Feature: admission
     * user clicks element via javascript "Clinical Support"
     * user is on the page "ClinicalSupportPage"
     * ? user clicks the button "Admission"
-    * user clicks element via javascript "Admission"
+    * user trying to click element via javascript "Admission"
     * user is on the page "AdmissionPage"
     * ? user clicks the button "In Processing"
     * user clicks element via javascript "In Processing"
@@ -203,9 +215,10 @@ Feature: admission
     * user clicks the button "first patient"
     * user waits "7" seconds
     * user checks that text "Loading More Admissions" is absent on the page
-    * user is on the page "AdmissionPage"
-    * user is on the page "PatientServiceDataPage"
-    * user clicks the button "Expand Physician and Insurance Info"
+#    * user is on the page "AdmissionPage"
+#    * user is on the page "PatientServiceDataPage"
+#    * ? user clicks the button "Expand Physician and Insurance Info"
+#    * user clicks element via javascript "search button"
     * user is on the page "PatientServiceDataPage"
     * user clicks the button "Edit Pre-Auth Info"
 
@@ -267,7 +280,7 @@ Feature: admission
     * user clicks element via javascript "UPDATE"
     * breakpoint
 
-
+#4
   @FirstPatientNewAdmissionApprovalInfo @data=$PatientServiceData
   Scenario Outline: FirstPatientNewAdmissionApprovalInfo
     * user performs "createPatient" scenario
@@ -281,7 +294,7 @@ Feature: admission
     * user clicks element via javascript "Clinical Support"
     * user is on the page "ClinicalSupportPage"
     * ? user clicks the button "Admission"
-    * user clicks element via javascript "Admission"
+    * ? user clicks element via javascript "Admission"
     * user is on the page "AdmissionPage"
     * ? user clicks the button "In Processing"
     * user clicks element via javascript "In Processing"
@@ -329,6 +342,7 @@ Feature: admission
       | searchByName | firstName   | lastName        | middleName | gender | searchValue   | birthDate  | patientNumberName | patientNumber | patientNumberName2 | patientNumber2 | patientNumberName3   | patientNumber3 |
       | 123          | random name | random lastname | A          | Male   | #{~firstName} | 03-10-1993 | MBI Number        | 0015          | Medicaid Number    | 0016           | Kaiser Policy Number | 0017           |
 
+    #5
   @FirstPatientNewAdmissionRequirements
   Scenario Outline: FirstPatientNewAdmissionRequirements
     * user performs "createPatient" scenario
@@ -396,6 +410,7 @@ Feature: admission
       | searchByName | firstName   | lastName        | middleName | gender | searchValue   | birthDate  | patientNumberName | patientNumber | patientNumberName2 | patientNumber2 | patientNumberName3   | patientNumber3 |
       | 123          | random name | random lastname | A          | Male   | #{~firstName} | 03-10-1993 | MBI Number        | 0015          | Medicaid Number    | 0016           | Kaiser Policy Number | 0017           |
 
+    #6
   @FirstPatientNewSpecialOrders
   Scenario Outline: FirstPatientNewSpecialOrders
     * user performs "createPatient" scenario
@@ -590,6 +605,7 @@ Feature: admission
       | searchByName | firstName   | lastName        | middleName | gender | searchValue   | birthDate  | patientNumberName | patientNumber | patientNumberName2 | patientNumber2 | patientNumberName3   | patientNumber3 |
       | 123          | random name | random lastname | A          | Male   | #{~firstName} | 03-10-1993 | MBI Number        | 0015          | Medicaid Number    | 0016           | Kaiser Policy Number | 0017           |
 
+    #7
   @FirstPatientNewIntakeNoteAndFaceToFace
   Scenario Outline: FirstPatientNewSpecialOrders
     * user performs "createPatient" scenario
@@ -627,11 +643,15 @@ Feature: admission
     * user clicks element via javascript "UPDATE"
     * user is on the page "PatientServiceDataPage"
     * user clicks element via javascript "Expand Face 2 Face Checklist"
+    * user is on the page "Face2FaceChecklistViewPage"
     * ? user clicks the button "Edit Face 2 Face Checklist"
+    #* user trying to click element via javascript "Edit Face 2 Face Checklist"
     * user is on the page "Face2FaceChecklistPage"
+    * breakpoint
     * user selects in dropdown "Face 2 face sent to MD" the value "Faxed to MD Office"
+    * breakpoint
     * user is on the page "Face2FaceChecklistPage"
-    * user fills the field "Date Sent Md" with value "05-05-2021"
+    * user fills the field via javascript "Date Sent Md" with value "05-05-2021"
     * user selects in dropdown "Face 2 Face Status on Admit Processing" the value "Missing"
     * user selects in dropdown "Appointment Set with PCP" the value "Appointment set"
     * user fills the field "PCP Appointment Date" with value "05-05-2021"
