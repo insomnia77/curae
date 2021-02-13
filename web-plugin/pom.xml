@@ -107,6 +107,7 @@
           </execution>
         </executions>
       </plugin>
+      <!--
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>aspectj-maven-plugin</artifactId>
@@ -126,6 +127,7 @@
             </goals>
           </execution>
         </executions>
+
         <dependencies>
           <dependency>
             <groupId>org.aspectj</groupId>
@@ -133,7 +135,9 @@
             <version>${aspectj.version}</version>
           </dependency>
         </dependencies>
+
       </plugin>
+      -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
@@ -153,13 +157,15 @@
             </property>
           </properties>
         </configuration>
+        <!--
         <dependencies>
-          <dependency>
+           <dependency>
             <groupId>org.aspectj</groupId>
             <artifactId>aspectjweaver</artifactId>
             <version>${aspectj.version}</version>
           </dependency>
         </dependencies>
+         -->
       </plugin>
       <plugin>
         <groupId>io.qameta.allure</groupId>
